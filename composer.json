@@ -1,0 +1,18 @@
+{
+  "name": "kastela-sdp/kastela-sdk-php",
+  "description": "Kastela SDK for PHP",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Kastela\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Hash Rekayasa Teknologi",
+      "email": "hello@hash.id"
+    }
+  ],
+  "require": {}
+}
