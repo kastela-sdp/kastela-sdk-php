@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Summary
+ */
 namespace Kastela;
 
 define("expectedKastelaVersion", "v0.0");
@@ -10,6 +13,10 @@ define("vaultPath", "/api/vault/");
  * @class
  * Create a new Kastela Client instance for communicating with the server.
  * Require server information and return client instance.
+ * ##### Example
+ * ```php
+ * $kastelaClient = new Client("server.url", "ca/path.crt", "client/credential/path.crt", "client/credential/path.key", );
+ * ```
  */
 class Client
 {
@@ -115,6 +122,11 @@ class Client
    * @param string $protectionId
    * @param mixed[] $ids array of protection data ids
    * @return void
+   * ##### #xample
+   * ```php
+   * // protect data with id 1,2,3,4,5
+   * kastelaClient->protection_seal("5f77f9c2-2800-4661-b479-a0791aa0eacc", [1,2,3,4,5]);
+   * ```
    */
   public function protection_seal($protectionId, $ids)
   {
@@ -128,6 +140,11 @@ class Client
    * @param string $protectionId
    * @param mixed[] $ids array of protection data ids
    * @return mixed[] $array of decrypted data refers to ids
+   * ##### #xample
+   * ```php
+   * // decrypt data with id 1,2,3,4,5
+   * $emails = kastelaClient->protection_open("5f77f9c2-2800-4661-b479-a0791aa0eacc", [1,2,3,4,5]); // return plain email
+   * ```
    */
   public function protection_open($protectionId, $ids)
   {
@@ -142,6 +159,10 @@ class Client
    * @param string $vaultId
    * @param mixed[] $data array of vault data
    * @return string[] array of vault token
+   * ##### #xample
+   * ```php
+   * 
+   * ```
    */
   public function vault_store($vaultId, $data)
   {
@@ -161,6 +182,11 @@ class Client
    *    'after' => (string) pagination offset
    * ]
    * @return string[]
+   * ##### #xample
+   * ```php
+   * // fetch vault data with indexed colum value "jhon doe", return the list of vault token/id
+   * $ids = $kastelaClient->vault_fetch("20e25596-db90-4945-ae0b-5886ba1bfdd0", "jhon doe", []);
+   * ```
    */
   public function vault_fetch($vaultId, $search, $params)
   {
@@ -184,6 +210,11 @@ class Client
    * @param string vaultId
    * @param string[] ids array of vault token
    * @return mixed[]
+   * ##### #xample
+   * ```php
+   * // get vault data
+   *  $secrets = $kastelaClient->vault_get("20e25596-db90-4945-ae0b-5886ba1bfdd0", ["d2657324-59f3-4bd4-92b0-c7f5e5ef7269", "331787a5-8930-4167-828f-7e783aeb158c"]);
+   * ```
    */
   public function vault_get($vaultId, $ids)
   {
@@ -199,6 +230,10 @@ class Client
    * @param string[] token vault token
    * @param mixed data update data
    * @return void
+   * ##### #xample
+   * ```php
+   * $kastelaClient->vault_update("20e25596-db90-4945-ae0b-5886ba1bfdd0", "331787a5-8930-4167-828f-7e783aeb158c", ["name" => "jane d'arc", "secret" => "this is new secret"]);
+   * ```
    */
   public function vault_update($vaultId, $token, $data)
   {
@@ -210,6 +245,10 @@ class Client
    * @param string vaultId
    * @param string token vault token
    * @return void
+   * ##### #xample
+   * ```php
+   * $kastelaClient->vault_delete("20e25596-db90-4945-ae0b-5886ba1bfdd0", "331787a5-8930-4167-828f-7e783aeb158c");
+   * ```
    */
   public function vault_delete($vaultId, $token)
   {
