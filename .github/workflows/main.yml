@@ -5,28 +5,12 @@ on:
     tags:
       - v[0-9]+.[0-9]+.[0-9]+
 
-  # Allow running the workflow manually from the Actions tab
-  #workflow_dispatch:
-
-# Allow GITHUB_TOKEN to deploy to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow one concurrent deployment
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v1
       - name: Cache phpDocumentor build files
         id: phpdocumentor-cache
         uses: actions/cache@v3
@@ -36,19 +20,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-phpdocumentor-
       - name: Build with phpDocumentor
-        run: docker run --rm --volume "$(pwd):/data" phpdoc/phpdoc:3 -d ./src -vv --target docs --cache-folder .phpdoc/cache --template default
+        run: docker run --rm --volume "$(pwd):/data" phpdoc/phpdoc:3 -d ./src -vv --target ./docs --cache-folder .phpdoc/cache --template default
       - name: Upload artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v1
         with:
-          path: docs
+          path: ./docs
 
-  deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+      - name: Deploy Docs
+            uses: peaceiris/actions-gh-pages@v3
+            with:
+              github_token: ${{ secrets.GITHUB_TOKEN }}
+              publish_dir: ./out
