@@ -18,7 +18,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Kastela\\Client",
             "name": "Client",
-            "summary": "",
+            "summary": "Create\u0020a\u0020new\u0020Kastela\u0020Client\u0020instance\u0020for\u0020communicating\u0020with\u0020the\u0020server.",
             "url": "classes/Kastela-Client.html"
         },                {
             "fqsen": "\\Kastela\\Client\u003A\u003A__construct\u0028\u0029",
