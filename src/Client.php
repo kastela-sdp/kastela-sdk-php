@@ -5,7 +5,7 @@
  */
 namespace Kastela;
 
-define("expectedKastelaVersion", "v0.0");
+define("expectedKastelaVersion", "v0.1");
 define("protectionPath", "/api/protection/");
 define("vaultPath", "/api/vault/");
 
