@@ -11,6 +11,7 @@ define("expectedKastelaVersion", "v0.2");
 define("protectionPath", "/api/protection/");
 define("vaultPath", "/api/vault/");
 define("privacyProxyPath", "/api/proxy");
+define("secureChannelPath", "/api/secure-channel");
 
 /**
  * Create a new Kastela Client instance for communicating with the server.
@@ -258,6 +259,39 @@ class Client
     $this->request('delete', $url, null);
   }
 
+  /**
+   * @param string $protectionId
+   * @param string $clientPublicKey client public key in base64 enconding
+   * @param int $ttl time to live in minutes
+   * @return array secure channel id and server public key
+   * #####
+   * ```php
+   * // begin secure channel
+   * $kastelaClient->secureChannelBegin("yourProtectionId", "yourClientPublicKey", 5)
+   * ```
+   */
+  public function secureChannelBegin(string $protectionId, string $clientPublickey, int $ttl)
+  {
+    $url = $this->kastelaUrl . secureChannelPath . '/begin';
+    $res = $this->request('post', $url, ["protection_id" => $protectionId, "client_public_key"]);
+    return ["id"=> $res["id"], "serverPublicKey"=>$res["server_public_key"]];
+  }
+  
+  /**
+   * @param string $secureChannelId
+   * @return void
+   * #####
+   * ```php
+   * // commit secure channel
+   * $kastelaClient->secureChannelCommit("yourSecureChannelId")
+   * ```
+   */
+  public function secureChannelCommit(string $secureChannelId) : void
+  {
+    $url = $this->kastelaUrl . secureChannelPath . '/' . $secureChannelId . '/commit';
+    $this->request('post', $url, null);
+  }
+
   /** Proxying Request.
    * @param string $type request body type "json"|"xml"
    * @param string $url request url
@@ -273,8 +307,12 @@ class Client
    *    'params' => (array) {object} request parameters, use "_" prefix for encrypted column key and data id/token as value.
    *    'body' => (array) {object} request body, use "_" prefix for encrypted column key and data id/token as value.
    *    'query' => (array)  {object} request query, use "_" prefix for encrypted column key and data id/token as value.
-   *    'rootTag' => (string) root tag, required for xml type
+   *    'rootTag' => (string) root tag, required for xml type$res = $kastelaClient->privacyProxyRequest($data["type"], $data["url"], $data["method"], $data["common"], $data["options"]);
    * ]
+   * ##### Example
+   * ```php
+   * $res = $kastelaClient->privacyProxyRequest($data["type"], $data["url"], $data["method"], $data["common"], $data["options"]);
+   * ```
    */
   public function privacyProxyRequest(string $type, string $url, string $method, array $common, array $options)
   {
