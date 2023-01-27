@@ -3,6 +3,7 @@
 /**
  * Summary
  */
+
 namespace Kastela;
 
 use Error;
@@ -63,8 +64,12 @@ class Client
     }
     switch ($method) {
       case 'post':
+        $body = null;
+        if (!empty($reqBody)) {
+          $body = $reqBody;
+        };
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $reqBody);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, null);
         break;
       case 'put':
@@ -273,10 +278,10 @@ class Client
   public function secureChannelBegin(string $protectionId, string $clientPublickey, int $ttl)
   {
     $url = $this->kastelaUrl . secureChannelPath . '/begin';
-    $res = $this->request('post', $url, ["protection_id" => $protectionId, "client_public_key"]);
-    return ["id"=> $res["id"], "serverPublicKey"=>$res["server_public_key"]];
+    $res = $this->request('post', $url, ["protection_id" => $protectionId, "client_public_key" => $clientPublickey, "ttl" => $ttl]);
+    return ["id" => $res["id"], "serverPublicKey" => $res["server_public_key"]];
   }
-  
+
   /**
    * @param string $secureChannelId
    * @return void
@@ -286,7 +291,7 @@ class Client
    * $kastelaClient->secureChannelCommit("yourSecureChannelId")
    * ```
    */
-  public function secureChannelCommit(string $secureChannelId) : void
+  public function secureChannelCommit(string $secureChannelId): void
   {
     $url = $this->kastelaUrl . secureChannelPath . '/' . $secureChannelId . '/commit';
     $this->request('post', $url, null);
@@ -319,7 +324,7 @@ class Client
     if ($type === "xml") {
       throw new \Error("rootTag is required for xml");
     }
-    $kastelUrl = $this->kastelaUrl.privacyProxyPath;
+    $kastelUrl = $this->kastelaUrl . privacyProxyPath;
     $res = $this->request('post', $kastelUrl, [
       "type" => $type,
       "url" => $url,
@@ -329,5 +334,4 @@ class Client
     ]);
     return $res;
   }
-}
-;
+};
