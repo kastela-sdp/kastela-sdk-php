@@ -16,6 +16,16 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#constant_vaultPath"
         },                {
+            "fqsen": "\\privacyProxyPath",
+            "name": "privacyProxyPath",
+            "summary": "",
+            "url": "namespaces/default.html#constant_privacyProxyPath"
+        },                {
+            "fqsen": "\\secureChannelPath",
+            "name": "secureChannelPath",
+            "summary": "",
+            "url": "namespaces/default.html#constant_secureChannelPath"
+        },                {
             "fqsen": "\\Kastela\\Client",
             "name": "Client",
             "summary": "Create\u0020a\u0020new\u0020Kastela\u0020Client\u0020instance\u0020for\u0020communicating\u0020with\u0020the\u0020server.",
@@ -26,40 +36,55 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Kastela-Client.html#method___construct"
         },                {
-            "fqsen": "\\Kastela\\Client\u003A\u003Aprotection_seal\u0028\u0029",
-            "name": "protection_seal",
+            "fqsen": "\\Kastela\\Client\u003A\u003AprotectionSeal\u0028\u0029",
+            "name": "protectionSeal",
             "summary": "Encrypt\u0020data\u0020protection\u0020by\u0020protection\u0020data\u0020ids,\u0020which\u0020can\u0020be\u0020used\u0020after\u0020storing\u0020data\u0020or\u0020updating\u0020data.",
-            "url": "classes/Kastela-Client.html#method_protection_seal"
+            "url": "classes/Kastela-Client.html#method_protectionSeal"
         },                {
-            "fqsen": "\\Kastela\\Client\u003A\u003Aprotection_open\u0028\u0029",
-            "name": "protection_open",
+            "fqsen": "\\Kastela\\Client\u003A\u003AprotectionOpen\u0028\u0029",
+            "name": "protectionOpen",
             "summary": "Decrypt\u0020data\u0020protection\u0020by\u0020protection\u0020data\u0020ids.",
-            "url": "classes/Kastela-Client.html#method_protection_open"
+            "url": "classes/Kastela-Client.html#method_protectionOpen"
         },                {
-            "fqsen": "\\Kastela\\Client\u003A\u003Avault_store\u0028\u0029",
-            "name": "vault_store",
+            "fqsen": "\\Kastela\\Client\u003A\u003AvaultStore\u0028\u0029",
+            "name": "vaultStore",
             "summary": "Store\u0020batch\u0020vault\u0020data\u0020on\u0020the\u0020server.",
-            "url": "classes/Kastela-Client.html#method_vault_store"
+            "url": "classes/Kastela-Client.html#method_vaultStore"
         },                {
-            "fqsen": "\\Kastela\\Client\u003A\u003Avault_fetch\u0028\u0029",
-            "name": "vault_fetch",
+            "fqsen": "\\Kastela\\Client\u003A\u003AvaultFetch\u0028\u0029",
+            "name": "vaultFetch",
             "summary": "Search\u0020vault\u0020data\u0020by\u0020indexed\u0020column.",
-            "url": "classes/Kastela-Client.html#method_vault_fetch"
+            "url": "classes/Kastela-Client.html#method_vaultFetch"
         },                {
-            "fqsen": "\\Kastela\\Client\u003A\u003Avault_get\u0028\u0029",
-            "name": "vault_get",
+            "fqsen": "\\Kastela\\Client\u003A\u003AvaultGet\u0028\u0029",
+            "name": "vaultGet",
             "summary": "Get\u0020batch\u0020vault\u0020data\u0020by\u0020vault\u0020token\u0020ids.",
-            "url": "classes/Kastela-Client.html#method_vault_get"
+            "url": "classes/Kastela-Client.html#method_vaultGet"
         },                {
-            "fqsen": "\\Kastela\\Client\u003A\u003Avault_update\u0028\u0029",
-            "name": "vault_update",
+            "fqsen": "\\Kastela\\Client\u003A\u003AvaultUpdate\u0028\u0029",
+            "name": "vaultUpdate",
             "summary": "Update\u0020vault\u0020data\u0020by\u0020vault\u0020token.",
-            "url": "classes/Kastela-Client.html#method_vault_update"
+            "url": "classes/Kastela-Client.html#method_vaultUpdate"
         },                {
-            "fqsen": "\\Kastela\\Client\u003A\u003Avault_delete\u0028\u0029",
-            "name": "vault_delete",
+            "fqsen": "\\Kastela\\Client\u003A\u003AvaultDelete\u0028\u0029",
+            "name": "vaultDelete",
             "summary": "Remove\u0020vault\u0020data\u0020by\u0020vault\u0020token.",
-            "url": "classes/Kastela-Client.html#method_vault_delete"
+            "url": "classes/Kastela-Client.html#method_vaultDelete"
+        },                {
+            "fqsen": "\\Kastela\\Client\u003A\u003AsecureChannelBegin\u0028\u0029",
+            "name": "secureChannelBegin",
+            "summary": "",
+            "url": "classes/Kastela-Client.html#method_secureChannelBegin"
+        },                {
+            "fqsen": "\\Kastela\\Client\u003A\u003AsecureChannelCommit\u0028\u0029",
+            "name": "secureChannelCommit",
+            "summary": "",
+            "url": "classes/Kastela-Client.html#method_secureChannelCommit"
+        },                {
+            "fqsen": "\\Kastela\\Client\u003A\u003AprivacyProxyRequest\u0028\u0029",
+            "name": "privacyProxyRequest",
+            "summary": "Proxying\u0020Request.",
+            "url": "classes/Kastela-Client.html#method_privacyProxyRequest"
         },                {
             "fqsen": "\\Kastela\\Client\u003A\u003A\u0024kastelaUrl",
             "name": "kastelaUrl",
