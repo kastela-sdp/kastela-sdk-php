@@ -3,11 +3,16 @@
 /**
  * Summary
  */
+
 namespace Kastela;
 
-define("expectedKastelaVersion", "v0.1");
+use Error;
+
+define("expectedKastelaVersion", "v0.2");
 define("protectionPath", "/api/protection/");
 define("vaultPath", "/api/vault/");
+define("privacyProxyPath", "/api/proxy");
+define("secureChannelPath", "/api/secure-channel");
 
 /**
  * Create a new Kastela Client instance for communicating with the server.
@@ -59,8 +64,12 @@ class Client
     }
     switch ($method) {
       case 'post':
+        $body = null;
+        if (!empty($reqBody)) {
+          $body = $reqBody;
+        };
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $reqBody);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, null);
         break;
       case 'put':
@@ -127,7 +136,7 @@ class Client
    * kastelaClient->protection_seal("5f77f9c2-2800-4661-b479-a0791aa0eacc", [1,2,3,4,5]);
    * ```
    */
-  public function protection_seal($protectionId, $ids)
+  public function protectionSeal($protectionId, $ids)
   {
     $url = $this->kastelaUrl . protectionPath . $protectionId . '/seal';
     $body = ["ids" => $ids];
@@ -145,7 +154,7 @@ class Client
    * $emails = kastelaClient->protection_open("5f77f9c2-2800-4661-b479-a0791aa0eacc", [1,2,3,4,5]); // return plain email
    * ```
    */
-  public function protection_open($protectionId, $ids)
+  public function protectionOpen($protectionId, $ids)
   {
     $url = $this->kastelaUrl . protectionPath . $protectionId . '/open';
     $body = ["ids" => $ids];
@@ -163,7 +172,7 @@ class Client
    * $secret = $kastelaClient->vault_store("20e25596-db90-4945-ae0b-5886ba1bfdd0", [["name" => $request->name, "secret" => $request->secret]])
    * ```
    */
-  public function vault_store($vaultId, $data)
+  public function vaultStore($vaultId, $data)
   {
     $url = $this->kastelaUrl . vaultPath . $vaultId . '/store';
     $body = ["data" => $data];
@@ -187,7 +196,7 @@ class Client
    * $ids = $kastelaClient->vault_fetch("20e25596-db90-4945-ae0b-5886ba1bfdd0", "jhon doe", []);
    * ```
    */
-  public function vault_fetch($vaultId, $search, $params)
+  public function vaultFetch($vaultId, $search, $params)
   {
     $baseUrl = $this->kastelaUrl . vaultPath . $vaultId;
 
@@ -206,8 +215,8 @@ class Client
   }
 
   /** Get batch vault data by vault token ids.
-   * @param string vaultId
-   * @param string[] ids array of vault token
+   * @param string $vaultId
+   * @param string[] $ids array of vault token
    * @return mixed[]
    * ##### Example
    * ```php
@@ -215,7 +224,7 @@ class Client
    *  $secrets = $kastelaClient->vault_get("20e25596-db90-4945-ae0b-5886ba1bfdd0", ["d2657324-59f3-4bd4-92b0-c7f5e5ef7269", "331787a5-8930-4167-828f-7e783aeb158c"]);
    * ```
    */
-  public function vault_get($vaultId, $ids)
+  public function vaultGet($vaultId, $ids)
   {
     $url = $this->kastelaUrl . vaultPath . $vaultId . '/get';
     $body = ["ids" => $ids];
@@ -225,34 +234,104 @@ class Client
   }
 
   /** Update vault data by vault token.
-   * @param string vaultId
-   * @param string[] token vault token
-   * @param mixed data update data
+   * @param string $vaultId
+   * @param string[] $token vault token
+   * @param mixed $data update data
    * @return void
    * ##### Example
    * ```php
    * $kastelaClient->vault_update("20e25596-db90-4945-ae0b-5886ba1bfdd0", "331787a5-8930-4167-828f-7e783aeb158c", ["name" => "jane d'arc", "secret" => "this is new secret"]);
    * ```
    */
-  public function vault_update($vaultId, $token, $data)
+  public function vaultUpdate($vaultId, $token, $data)
   {
     $url = $this->kastelaUrl . vaultPath . $vaultId . '/' . $token;
     $this->request('put', $url, $data);
   }
 
   /** Remove vault data by vault token.
-   * @param string vaultId
-   * @param string token vault token
+   * @param string $vaultId
+   * @param string $token vault token
    * @return void
    * ##### Example
    * ```php
    * $kastelaClient->vault_delete("20e25596-db90-4945-ae0b-5886ba1bfdd0", "331787a5-8930-4167-828f-7e783aeb158c");
    * ```
    */
-  public function vault_delete($vaultId, $token)
+  public function vaultDelete($vaultId, $token)
   {
     $url = $this->kastelaUrl . vaultPath . $vaultId . '/' . $token;
     $this->request('delete', $url, null);
   }
-}
-;
+
+  /**
+   * @param string $protectionId
+   * @param string $clientPublicKey client public key in base64 enconding
+   * @param int $ttl time to live in minutes
+   * @return array secure channel id and server public key
+   * #####
+   * ```php
+   * // begin secure channel
+   * $kastelaClient->secureChannelBegin("yourProtectionId", "yourClientPublicKey", 5)
+   * ```
+   */
+  public function secureChannelBegin(string $protectionId, string $clientPublickey, int $ttl)
+  {
+    $url = $this->kastelaUrl . secureChannelPath . '/begin';
+    $res = $this->request('post', $url, ["protection_id" => $protectionId, "client_public_key" => $clientPublickey, "ttl" => $ttl]);
+    return ["id" => $res["id"], "serverPublicKey" => $res["server_public_key"]];
+  }
+
+  /**
+   * @param string $secureChannelId
+   * @return void
+   * #####
+   * ```php
+   * // commit secure channel
+   * $kastelaClient->secureChannelCommit("yourSecureChannelId")
+   * ```
+   */
+  public function secureChannelCommit(string $secureChannelId): void
+  {
+    $url = $this->kastelaUrl . secureChannelPath . '/' . $secureChannelId . '/commit';
+    $this->request('post', $url, null);
+  }
+
+  /** Proxying Request.
+   * @param string $type request body type "json"|"xml"
+   * @param string $url request url
+   * @param string $method request method "get"|"post"
+   * @param array $common needed information for protection and vault.
+   * $common = [
+   *    'protections' => ['_column'=>'protectionId'] protections object list. Define column with prefix as key and protectionId as value.
+   *    'vaults' => ['_column'=>['vaultId', 'selectedVaultColumn']]] vaults object list. Define column with prefix as key and array with id as first index and vault column as second index.
+   * ]
+   * @param array $options
+   * $options = [
+   *    'headers' => (array) {object} request headers, use "_" prefix for encrypted column key and data id/token as value.
+   *    'params' => (array) {object} request parameters, use "_" prefix for encrypted column key and data id/token as value.
+   *    'body' => (array) {object} request body, use "_" prefix for encrypted column key and data id/token as value.
+   *    'query' => (array)  {object} request query, use "_" prefix for encrypted column key and data id/token as value.
+   *    'rootTag' => (string) root tag, required for xml type$res = $kastelaClient->privacyProxyRequest($data["type"], $data["url"], $data["method"], $data["common"], $data["options"]);
+   * ]
+   * ##### Example
+   * ```php
+   * $res = $kastelaClient->privacyProxyRequest($data["type"], $data["url"], $data["method"], $data["common"], $data["options"]);
+   * ```
+   */
+  public function privacyProxyRequest(string $type, string $url, string $method, array $common, array $options)
+  {
+    if ($type === "xml") {
+      throw new \Error("rootTag is required for xml");
+    }
+    $kastelUrl = $this->kastelaUrl . privacyProxyPath;
+    $res = $this->request('post', $kastelUrl, [
+      "type" => $type,
+      "url" => $url,
+      "method" => $method,
+      "common" => $common,
+      "options" => $options
+    ]);
+    return $res;
+  }
+};
