@@ -13,6 +13,7 @@ define("protectionPath", "/api/protection/");
 define("vaultPath", "/api/vault/");
 define("privacyProxyPath", "/api/proxy");
 define("secureChannelPath", "/api/secure-channel");
+define("securePath", "/api/secure");
 
 /**
  * Create a new Kastela Client instance for communicating with the server.
@@ -108,7 +109,9 @@ class Client
     $splitCurrentV = explode('.', $headers['X-Kastela-Version']);
     $currentVersion = $splitCurrentV[0] . '.' . $splitCurrentV[1];
     if (version_compare($currentVersion, expectedKastelaVersion) != 0) {
-      throw new \Error("kastela server version mismatch, expected: " . expectedKastelaVersion . ".x, actual: " . $headers['X-Kastela-Version']);
+      if ($currentVersion != 'v0.0') {
+        throw new \Error("kastela server version mismatch, expected: " . expectedKastelaVersion . ".x, actual: " . $headers['X-Kastela-Version']);
+      }
     }
 
     $body = json_decode($body, true);
@@ -264,37 +267,37 @@ class Client
     $this->request('delete', $url, null);
   }
 
-  /**
-   * @param string $protectionId
-   * @param string $clientPublicKey client public key in base64 enconding
-   * @param int $ttl time to live in minutes
-   * @return array secure channel id and server public key
-   * #####
+   /** Initialize secure protection.
+   * @param string $operation operation secure protection operation mode
+   * @param array $protectionIds protectionIds array of protection id
+   * @param int $ttl ttl time to live in minutes
+   * @return array secure protection credential
+   * ##### Example
    * ```php
-   * // begin secure channel
-   * $kastelaClient->secureChannelBegin("yourProtectionId", "yourClientPublicKey", 5)
+   * 	// begin secure protection
+   * client.secureProtectionInit(["yourProtectionId"], 5)
    * ```
    */
-  public function secureChannelBegin(string $protectionId, string $clientPublickey, int $ttl)
+  public function secureProtectionInit(string $operation, array $protectionIds, int $ttl)
   {
-    $url = $this->kastelaUrl . secureChannelPath . '/begin';
-    $res = $this->request('post', $url, ["protection_id" => $protectionId, "client_public_key" => $clientPublickey, "ttl" => $ttl]);
-    return ["id" => $res["id"], "serverPublicKey" => $res["server_public_key"]];
+    $url = $this->kastelaUrl . securePath . '/protection/init';
+    $res = $this->request('post', $url, ["operation" => $operation, "protection_ids" => $protectionIds, "ttl" => $ttl]);
+    return ["credential" => $res["credential"]];
   }
 
-  /**
-   * @param string $secureChannelId
+  /** Commit secure protection.
+   * @param string $credential
    * @return void
-   * #####
+   * ##### Example
    * ```php
-   * // commit secure channel
-   * $kastelaClient->secureChannelCommit("yourSecureChannelId")
+   * 	// commit secure protection
+   * client.secureProtectionCommit("yourCredential")
    * ```
    */
-  public function secureChannelCommit(string $secureChannelId): void
+  public function secureProtectionCommit(string $credential)
   {
-    $url = $this->kastelaUrl . secureChannelPath . '/' . $secureChannelId . '/commit';
-    $this->request('post', $url, null);
+    $url = $this->kastelaUrl . securePath . '/protection/commit';
+    $this->request('post', $url, ["credential" => $credential]);
   }
 
   /** Proxying Request.
