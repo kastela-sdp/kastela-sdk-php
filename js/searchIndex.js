@@ -26,6 +26,11 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#constant_secureChannelPath"
         },                {
+            "fqsen": "\\securePath",
+            "name": "securePath",
+            "summary": "",
+            "url": "namespaces/default.html#constant_securePath"
+        },                {
             "fqsen": "\\Kastela\\Client",
             "name": "Client",
             "summary": "Create\u0020a\u0020new\u0020Kastela\u0020Client\u0020instance\u0020for\u0020communicating\u0020with\u0020the\u0020server.",
@@ -71,15 +76,15 @@ Search.appendIndex(
             "summary": "Remove\u0020vault\u0020data\u0020by\u0020vault\u0020token.",
             "url": "classes/Kastela-Client.html#method_vaultDelete"
         },                {
-            "fqsen": "\\Kastela\\Client\u003A\u003AsecureChannelBegin\u0028\u0029",
-            "name": "secureChannelBegin",
-            "summary": "",
-            "url": "classes/Kastela-Client.html#method_secureChannelBegin"
+            "fqsen": "\\Kastela\\Client\u003A\u003AsecureProtectionInit\u0028\u0029",
+            "name": "secureProtectionInit",
+            "summary": "Initialize\u0020secure\u0020protection.",
+            "url": "classes/Kastela-Client.html#method_secureProtectionInit"
         },                {
-            "fqsen": "\\Kastela\\Client\u003A\u003AsecureChannelCommit\u0028\u0029",
-            "name": "secureChannelCommit",
-            "summary": "",
-            "url": "classes/Kastela-Client.html#method_secureChannelCommit"
+            "fqsen": "\\Kastela\\Client\u003A\u003AsecureProtectionCommit\u0028\u0029",
+            "name": "secureProtectionCommit",
+            "summary": "Commit\u0020secure\u0020protection.",
+            "url": "classes/Kastela-Client.html#method_secureProtectionCommit"
         },                {
             "fqsen": "\\Kastela\\Client\u003A\u003AprivacyProxyRequest\u0028\u0029",
             "name": "privacyProxyRequest",
