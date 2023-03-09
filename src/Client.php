@@ -7,8 +7,9 @@
 namespace Kastela;
 
 use Error;
+use JsonSerializable;
 
-define("expectedKastelaVersion", "v0.2");
+define("expectedKastelaVersion", "v0.3");
 define("protectionPath", "/api/protection/");
 define("vaultPath", "/api/vault/");
 define("privacyProxyPath", "/api/proxy");
@@ -129,146 +130,117 @@ class Client
     return $body;
   }
 
-  /** Encrypt data protection by protection data ids, which can be used after storing data or updating data.
-   * @param string $protectionId
-   * @param mixed[] $ids array of protection data ids
+  /** Store batch vault data on the server.
+   * @param list<VaultStoreInput> $input
+   * @return list<list<string>> of vault $token
+   * ##### Example
+   * ```php
+   * $tokens = $kastelaClient->vault_store([new VaultStoreInput("id", ["values1", "values2"])])
+   * ```
+   */
+  public function vaultStore(array $input)
+  {
+    $url = $this->kastelaUrl . vaultPath . 'store';
+
+    $res = $this->request('post', $url, $input);
+    return $res["tokens"];
+  }
+
+  /** Search vault data by indexed column.
+   * @param VaultFetchInput $input
+   * @return list<string>
+   * ##### Example
+   * ```php
+   * // fetch vault data with indexed colum $value "jhon doe", return the list of vault $token/id
+   * $tokens = $kastelaClient->vault_fetch(new VaultFetchInput($data["vault_id"], $data["search"], $data["size"] | null, $data["after"] | null));
+   * ```
+   */
+  public function vaultFetch(VaultFetchInput $input)
+  {
+    $url = $this->kastelaUrl . vaultPath . "fetch";
+
+    $res = $this->request('post', $url, $input);
+    return $res["tokens"];
+  }
+
+  /** Get batch vault data by vault $token ids.
+   * @param list<VaultGetInput> $input
+   * @return list<list<mixed>>
+   * ##### Example
+   * ```php
+   * // get vault data
+   *  $secrets = $kastelaClient->vault_get(new VaultGetInput("id", ["tokens1", "tokens2"]));
+   * ```
+   */
+  public function vaultGet(array $input)
+  {
+    $url = $this->kastelaUrl . vaultPath . 'get';
+
+    $res = $this->request('post', $url, $input);
+    return $res["values"];
+  }
+
+  /** Update vault data by vault $token.
+   * @param list<VaultUpdateInput> $input
+   * @return void
+   * ##### Example
+   * ```php
+   * $kastelaClient->vault_update([new VaultUpdateInput("id", [new VaultUpdateInputValues("token", ["data"=>"yourUpdateData"])])]);
+   * ```
+   */
+  public function vaultUpdate(array $input)
+  {
+    $url = $this->kastelaUrl . vaultPath . 'update';
+    $this->request('post', $url, $input);
+  }
+
+  /** Remove vault data by vault $token.
+   * @param list<VaultDeleteInput> $input
+   * @return void
+   * ##### Example
+   * ```php
+   * $kastelaClient->vault_delete(new VaultDeleteInput("id", ["token1", "token2"]));
+   * ```
+   */
+  public function vaultDelete(array $input)
+  {
+    $url = $this->kastelaUrl . vaultPath . 'delete';
+    $this->request('post', $url, $input);
+  }
+
+  /** Encrypt data protection by protection data ids, which can be used $after storing data or updating data.
+   * @param list<ProtectionSealInput> $input
    * @return void
    * ##### Example
    * ```php
    * // protect data with id 1,2,3,4,5
-   * kastelaClient->protection_seal("5f77f9c2-2800-4661-b479-a0791aa0eacc", [1,2,3,4,5]);
+   * kastelaClient->protection_seal([new ProtectionSealInput("id", ["pKey1", "pKey2"])]);
    * ```
    */
-  public function protectionSeal($protectionId, $ids)
+  public function protectionSeal(array $input)
   {
-    $url = $this->kastelaUrl . protectionPath . $protectionId . '/seal';
-    $body = ["ids" => $ids];
-
-    $this->request('post', $url, $body);
+    $url = $this->kastelaUrl . protectionPath . 'seal';
+    $this->request('post', $url, $input);
   }
 
   /** Decrypt data protection by protection data ids.
-   * @param string $protectionId
-   * @param mixed[] $ids array of protection data ids
-   * @return mixed[] $array of decrypted data refers to ids
+   * @param list<ProtectionOpenInput> $input
+   * @return list<list<mixed>> $array of decrypted data refers to ids
    * ##### Example
    * ```php
    * // decrypt data with id 1,2,3,4,5
-   * $emails = kastelaClient->protection_open("5f77f9c2-2800-4661-b479-a0791aa0eacc", [1,2,3,4,5]); // return plain email
+   * $data = kastelaClient->protection_open(new ProtectionOpenInput("id", ["token1", "token2"])]);
    * ```
    */
-  public function protectionOpen($protectionId, $ids)
+  public function protectionOpen(array $input)
   {
-    $url = $this->kastelaUrl . protectionPath . $protectionId . '/open';
-    $body = ["ids" => $ids];
-
-    $res = $this->request('post', $url, $body);
+    $url = $this->kastelaUrl . protectionPath . 'open';
+    $res = $this->request('post', $url, $input);
     return $res["data"];
   }
 
-  /** Store batch vault data on the server.
-   * @param string $vaultId
-   * @param mixed[] $data array of vault data
-   * @return string[] array of vault token
-   * ##### Example
-   * ```php
-   * $secret = $kastelaClient->vault_store("20e25596-db90-4945-ae0b-5886ba1bfdd0", [["name" => $request->name, "secret" => $request->secret]])
-   * ```
-   */
-  public function vaultStore($vaultId, $data)
-  {
-    $url = $this->kastelaUrl . vaultPath . $vaultId . '/store';
-    $body = ["data" => $data];
-
-    $res = $this->request('post', $url, $body);
-    return $res["ids"];
-  }
-
-  /** Search vault data by indexed column.
-   * @param string $vaultId
-   * @param string $search indexed column value
-   * @param array $params pagination parameters.
-   * $params = [
-   *    'size' => (int) pagination size.,
-   *    'after' => (string) pagination offset
-   * ]
-   * @return string[]
-   * ##### Example
-   * ```php
-   * // fetch vault data with indexed colum value "jhon doe", return the list of vault token/id
-   * $ids = $kastelaClient->vault_fetch("20e25596-db90-4945-ae0b-5886ba1bfdd0", "jhon doe", []);
-   * ```
-   */
-  public function vaultFetch($vaultId, $search, $params)
-  {
-    $baseUrl = $this->kastelaUrl . vaultPath . $vaultId;
-
-    $params = ["search" => $search];
-    if (isset($params["size"])) {
-      array_push($params, ["size" => $params["size"]]);
-    }
-    if (isset($params["affter"])) {
-      array_push($params, ["after" => $params["after"]]);
-    }
-
-    $url = $baseUrl . '?' . http_build_query($params);
-
-    $res = $this->request('get', $url, null);
-    return $res["ids"];
-  }
-
-  /** Get batch vault data by vault token ids.
-   * @param string $vaultId
-   * @param string[] $ids array of vault token
-   * @return mixed[]
-   * ##### Example
-   * ```php
-   * // get vault data
-   *  $secrets = $kastelaClient->vault_get("20e25596-db90-4945-ae0b-5886ba1bfdd0", ["d2657324-59f3-4bd4-92b0-c7f5e5ef7269", "331787a5-8930-4167-828f-7e783aeb158c"]);
-   * ```
-   */
-  public function vaultGet($vaultId, $ids)
-  {
-    $url = $this->kastelaUrl . vaultPath . $vaultId . '/get';
-    $body = ["ids" => $ids];
-
-    $res = $this->request('post', $url, $body);
-    return $res["data"];
-  }
-
-  /** Update vault data by vault token.
-   * @param string $vaultId
-   * @param string[] $token vault token
-   * @param mixed $data update data
-   * @return void
-   * ##### Example
-   * ```php
-   * $kastelaClient->vault_update("20e25596-db90-4945-ae0b-5886ba1bfdd0", "331787a5-8930-4167-828f-7e783aeb158c", ["name" => "jane d'arc", "secret" => "this is new secret"]);
-   * ```
-   */
-  public function vaultUpdate($vaultId, $token, $data)
-  {
-    $url = $this->kastelaUrl . vaultPath . $vaultId . '/' . $token;
-    $this->request('put', $url, $data);
-  }
-
-  /** Remove vault data by vault token.
-   * @param string $vaultId
-   * @param string $token vault token
-   * @return void
-   * ##### Example
-   * ```php
-   * $kastelaClient->vault_delete("20e25596-db90-4945-ae0b-5886ba1bfdd0", "331787a5-8930-4167-828f-7e783aeb158c");
-   * ```
-   */
-  public function vaultDelete($vaultId, $token)
-  {
-    $url = $this->kastelaUrl . vaultPath . $vaultId . '/' . $token;
-    $this->request('delete', $url, null);
-  }
-
-   /** Initialize secure protection.
-   * @param string $operation operation secure protection operation mode
+  /** Initialize secure protection.
+   * @param SecureOperation $operation operation secure protection operation mode
    * @param array $protectionIds protectionIds array of protection id
    * @param int $ttl ttl time to live in minutes
    * @return array secure protection credential
@@ -278,7 +250,7 @@ class Client
    * client.secureProtectionInit(["yourProtectionId"], 5)
    * ```
    */
-  public function secureProtectionInit(string $operation, array $protectionIds, int $ttl)
+  public function secureProtectionInit(SecureOperation $operation, array $protectionIds, int $ttl)
   {
     $url = $this->kastelaUrl . securePath . '/protection/init';
     $res = $this->request('post', $url, ["operation" => $operation, "protection_ids" => $protectionIds, "ttl" => $ttl]);
@@ -301,20 +273,20 @@ class Client
   }
 
   /** Proxying Request.
-   * @param string $type request body type "json"|"xml"
+   * @param PrivacyProxyRequestType $type request body type "json"|"xml"
    * @param string $url request url
-   * @param string $method request method "get"|"post"
+   * @param PrivacyProxyRequestMethod $method request method "get"|"post"
    * @param array $common needed information for protection and vault.
    * $common = [
-   *    'protections' => ['_column'=>'protectionId'] protections object list. Define column with prefix as key and protectionId as value.
+   *    'protections' => ['_column'=>'protectionId'] protections object list. Define column with prefix as key and protectionId as $value.
    *    'vaults' => ['_column'=>['vaultId', 'selectedVaultColumn']]] vaults object list. Define column with prefix as key and array with id as first index and vault column as second index.
    * ]
    * @param array $options
    * $options = [
-   *    'headers' => (array) {object} request headers, use "_" prefix for encrypted column key and data id/token as value.
-   *    'params' => (array) {object} request parameters, use "_" prefix for encrypted column key and data id/token as value.
-   *    'body' => (array) {object} request body, use "_" prefix for encrypted column key and data id/token as value.
-   *    'query' => (array)  {object} request query, use "_" prefix for encrypted column key and data id/token as value.
+   *    'headers' => (array) {object} request headers, use "_" prefix for encrypted column key and data id/token as $value.
+   *    'params' => (array) {object} request parameters, use "_" prefix for encrypted column key and data id/token as $value.
+   *    'body' => (array) {object} request body, use "_" prefix for encrypted column key and data id/token as $value.
+   *    'query' => (array)  {object} request query, use "_" prefix for encrypted column key and data id/token as $value.
    *    'rootTag' => (string) root tag, required for xml type$res = $kastelaClient->privacyProxyRequest($data["type"], $data["url"], $data["method"], $data["common"], $data["options"]);
    * ]
    * ##### Example
@@ -322,7 +294,7 @@ class Client
    * $res = $kastelaClient->privacyProxyRequest($data["type"], $data["url"], $data["method"], $data["common"], $data["options"]);
    * ```
    */
-  public function privacyProxyRequest(string $type, string $url, string $method, array $common, array $options)
+  public function privacyProxyRequest(PrivacyProxyRequestType $type, string $url, PrivacyProxyRequestMethod $method, array $common, array $options)
   {
     if ($type === "xml") {
       throw new \Error("rootTag is required for xml");
@@ -338,3 +310,200 @@ class Client
     return $res;
   }
 };
+
+enum SecureOperation: string
+{
+  const READ = 'READ';
+  const WRITE = 'WRITE';
+}
+
+enum PrivacyProxyRequestType: string
+{
+  const json = 'json';
+  const xml = 'xml';
+}
+
+enum PrivacyProxyRequestMethod: string
+{
+  const get = 'get';
+  const post = 'post';
+  const put = 'put';
+  const delete = 'delete';
+  const patch = 'patch';
+}
+
+class VaultStoreInput implements JsonSerializable
+{
+  public string $vaultID;
+  public array $values;
+
+  /**
+   *  @param list<mixed> $values
+   */
+  public function __construct(string $vaultID, array $values)
+  {
+    $this->vaultID = $vaultID;
+    $this->values = $values;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "vault_id" => $this->vaultID,
+      "values" => $this->values
+    ];
+  }
+}
+
+class VaultDeleteInput implements JsonSerializable
+{
+  public string $vaultID;
+  public array $tokens;
+
+  /**
+   * @param list<string> $tokens
+   */
+  public function __construct(string $vaultID, array $tokens)
+  {
+    $this->vaultID = $vaultID;
+    $this->tokens = $tokens;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "vault_id" => $this->vaultID,
+      "tokens" => $this->tokens
+    ];
+  }
+}
+
+class VaultFetchInput implements JsonSerializable
+{
+  public string $vaultID;
+  public mixed $search;
+  public int $size;
+  public string $after;
+
+  public function __construct(string $vaultID, mixed $search, int $size, string $after)
+  {
+    $this->vaultID = $vaultID;
+    $this->search = $search;
+    $this->size = $size;
+    $this->after = $after;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "vault_id" => $this->vaultID,
+      "search" => $this->search,
+      "size" => $this->size,
+      "after" => $this->after
+    ];
+  }
+}
+
+class VaultGetInput implements JsonSerializable
+{
+  public string $vaultID;
+  public array $tokens;
+
+  /**
+   * @param array<string> $tokens
+   */
+  public function __construct(string $vaultID, array $tokens)
+  {
+    $this->vaultID = $vaultID;
+    $this->tokens = $tokens;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "vault_id" => $this->vaultID,
+      "tokens" => $this->tokens
+    ];
+  }
+}
+
+class VaultUpdateInput implements JsonSerializable
+{
+  public string $vaultID;
+  public array $values;
+
+  /**
+   * @param array<VaultUpdateInputValues> $values
+   */
+  public function __construct(string $vaultID, array $values)
+  {
+    $this->vaultID = $vaultID;
+    $this->values = $values;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "vault_id" => $this->vaultID,
+      "values" => $this->values
+    ];
+  }
+}
+
+class VaultUpdateInputValues
+{
+  public string $token;
+  public mixed $value;
+
+  public function __construct(string $token, mixed $value)
+  {
+    $this->token = $token;
+    $this->value = $value;
+  }
+}
+
+class ProtectionSealInput implements JsonSerializable
+{
+  private string $protectionID;
+  private array $primaryKeys;
+
+  /**
+   * @param array<mixed> $primaryKeys
+   */
+  public function __construct(string $protectionID, array $primaryKeys)
+  {
+    $this->protectionID = $protectionID;
+    $this->primaryKeys = $primaryKeys;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "protection_id" => $this->protectionID,
+      "primary_keys" => $this->primaryKeys
+    ];
+  }
+}
+
+class ProtectionOpenInput implements JsonSerializable
+{
+  private string $protectionID;
+  private array $tokens;
+
+  /**
+   * @param array<mixed> $tokens
+   */
+  public function __construct(string $protectionID, array $tokens)
+  {
+    $this->protectionID = $protectionID;
+    $this->tokens = $tokens;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "protection_id" => $this->protectionID,
+      "tokens" => $this->tokens
+    ];
+  }
+}
