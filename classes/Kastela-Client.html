@@ -111,7 +111,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
@@ -177,7 +177,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Kastela-Client.html#method_protectionOpen">protectionOpen()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: array&lt;int, array&lt;int, mixed&gt;&gt;    </span>
 </dt>
 <dd>Decrypt data protection by protection data ids.</dd>
 
@@ -186,7 +186,7 @@
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Encrypt data protection by protection data ids, which can be used after storing data or updating data.</dd>
+<dd>Encrypt data protection by protection data ids, which can be used $after storing data or updating data.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Kastela-Client.html#method_secureProtectionCommit">secureProtectionCommit()</a>
@@ -207,26 +207,26 @@
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Remove vault data by vault token.</dd>
+<dd>Remove vault data by vault $token.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Kastela-Client.html#method_vaultFetch">vaultFetch()</a>
     <span>
-                                &nbsp;: array&lt;string|int, string&gt;    </span>
+                                &nbsp;: array&lt;int, string&gt;    </span>
 </dt>
 <dd>Search vault data by indexed column.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Kastela-Client.html#method_vaultGet">vaultGet()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: array&lt;int, array&lt;int, mixed&gt;&gt;    </span>
 </dt>
-<dd>Get batch vault data by vault token ids.</dd>
+<dd>Get batch vault data by vault $token ids.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Kastela-Client.html#method_vaultStore">vaultStore()</a>
     <span>
-                                &nbsp;: array&lt;string|int, string&gt;    </span>
+                                &nbsp;: array&lt;int, array&lt;int, string&gt;&gt;    </span>
 </dt>
 <dd>Store batch vault data on the server.</dd>
 
@@ -235,7 +235,7 @@
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Update vault data by vault token.</dd>
+<dd>Update vault data by vault $token.</dd>
 
     </dl>
 
@@ -268,7 +268,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
@@ -306,7 +306,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">41</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
@@ -376,7 +376,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">325</span>
+    <span class="phpdocumentor-element-found-in__line">297</span>
 
     </aside>
 
@@ -384,7 +384,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">privacyProxyRequest</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$type</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$url</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$method</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$common</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">privacyProxyRequest</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-PrivacyProxyRequestType.html"><abbr title="\Kastela\PrivacyProxyRequestType">PrivacyProxyRequestType</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$type</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$url</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-PrivacyProxyRequestMethod.html"><abbr title="\Kastela\PrivacyProxyRequestMethod">PrivacyProxyRequestMethod</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$method</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$common</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -393,7 +393,7 @@
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$type</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-PrivacyProxyRequestType.html"><abbr title="\Kastela\PrivacyProxyRequestType">PrivacyProxyRequestType</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>request body type &quot;json&quot;|&quot;xml&quot;</p>
@@ -411,7 +411,7 @@
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$method</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-PrivacyProxyRequestMethod.html"><abbr title="\Kastela\PrivacyProxyRequestMethod">PrivacyProxyRequestMethod</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>request method &quot;get&quot;|&quot;post&quot;</p>
@@ -425,7 +425,7 @@
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>needed information for protection and vault.
 $common = [
-'protections' =&gt; ['_column'=&gt;'protectionId'] protections object list. Define column with prefix as key and protectionId as value.
+'protections' =&gt; ['_column'=&gt;'protectionId'] protections object list. Define column with prefix as key and protectionId as $value.
 'vaults' =&gt; ['_column'=&gt;['vaultId', 'selectedVaultColumn']]] vaults object list. Define column with prefix as key and array with id as first index and vault column as second index.
 ]</p>
 </section>
@@ -437,10 +437,10 @@ $common = [
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>$options = [
-'headers' =&gt; (array) {object} request headers, use &quot;<em>&quot; prefix for encrypted column key and data id/token as value.
-'params' =&gt; (array) {object} request parameters, use &quot;</em>&quot; prefix for encrypted column key and data id/token as value.
-'body' =&gt; (array) {object} request body, use &quot;<em>&quot; prefix for encrypted column key and data id/token as value.
-'query' =&gt; (array)  {object} request query, use &quot;</em>&quot; prefix for encrypted column key and data id/token as value.
+'headers' =&gt; (array) {object} request headers, use &quot;<em>&quot; prefix for encrypted column key and data id/token as $value.
+'params' =&gt; (array) {object} request parameters, use &quot;</em>&quot; prefix for encrypted column key and data id/token as $value.
+'body' =&gt; (array) {object} request body, use &quot;<em>&quot; prefix for encrypted column key and data id/token as $value.
+'query' =&gt; (array)  {object} request query, use &quot;</em>&quot; prefix for encrypted column key and data id/token as $value.
 'rootTag' =&gt; (string) root tag, required for xml type$res = $kastelaClient-&gt;privacyProxyRequest($data[&quot;type&quot;], $data[&quot;url&quot;], $data[&quot;method&quot;], $data[&quot;common&quot;], $data[&quot;options&quot;]);
 ]</p>
 <h5>Example</h5>
@@ -469,7 +469,7 @@ $common = [
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">160</span>
+    <span class="phpdocumentor-element-found-in__line">235</span>
 
     </aside>
 
@@ -477,7 +477,7 @@ $common = [
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">protectionOpen</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$protectionId</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ids</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">protectionOpen</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;int, <a href="classes/Kastela-ProtectionOpenInput.html"><abbr title="\Kastela\ProtectionOpenInput">ProtectionOpenInput</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, array&lt;int, mixed&gt;&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -485,20 +485,11 @@ $common = [
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$protectionId</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                <span class="phpdocumentor-signature__argument__name">$input</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;int, <a href="classes/Kastela-ProtectionOpenInput.html"><abbr title="\Kastela\ProtectionOpenInput">ProtectionOpenInput</abbr></a>&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$ids</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>array of protection data ids</p>
-</section>
-
             </dd>
             </dl>
 
@@ -506,12 +497,12 @@ $common = [
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;int, array&lt;int, mixed&gt;&gt;</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>$array of decrypted data refers to ids</p>
 <h5>Example</h5>
 <pre class="prettyprint"><code class="language-php">// decrypt data with id 1,2,3,4,5
-$emails = kastelaClient-&gt;protection_open(&quot;5f77f9c2-2800-4661-b479-a0791aa0eacc&quot;, [1,2,3,4,5]); // return plain email
+$data = kastelaClient-&gt;protection_open(new ProtectionOpenInput(&quot;id&quot;, [&quot;token1&quot;, &quot;token2&quot;])]);
 </code></pre>
 </section>
 
@@ -532,15 +523,15 @@ $emails = kastelaClient-&gt;protection_open(&quot;5f77f9c2-2800-4661-b479-a0791a
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">142</span>
+    <span class="phpdocumentor-element-found-in__line">220</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Encrypt data protection by protection data ids, which can be used after storing data or updating data.</p>
+        <p class="phpdocumentor-summary">Encrypt data protection by protection data ids, which can be used $after storing data or updating data.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">protectionSeal</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$protectionId</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ids</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">protectionSeal</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;int, <a href="classes/Kastela-ProtectionSealInput.html"><abbr title="\Kastela\ProtectionSealInput">ProtectionSealInput</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -548,20 +539,11 @@ $emails = kastelaClient-&gt;protection_open(&quot;5f77f9c2-2800-4661-b479-a0791a
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$protectionId</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                <span class="phpdocumentor-signature__argument__name">$input</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;int, <a href="classes/Kastela-ProtectionSealInput.html"><abbr title="\Kastela\ProtectionSealInput">ProtectionSealInput</abbr></a>&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$ids</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>array of protection data ids</p>
-</section>
-
             </dd>
             </dl>
 
@@ -573,7 +555,7 @@ $emails = kastelaClient-&gt;protection_open(&quot;5f77f9c2-2800-4661-b479-a0791a
                     &mdash;
                 <section class="phpdocumentor-description"><h5>Example</h5>
 <pre class="prettyprint"><code class="language-php">// protect data with id 1,2,3,4,5
-kastelaClient-&gt;protection_seal(&quot;5f77f9c2-2800-4661-b479-a0791aa0eacc&quot;, [1,2,3,4,5]);
+kastelaClient-&gt;protection_seal([new ProtectionSealInput(&quot;id&quot;, [&quot;pKey1&quot;, &quot;pKey2&quot;])]);
 </code></pre>
 </section>
 
@@ -594,7 +576,7 @@ kastelaClient-&gt;protection_seal(&quot;5f77f9c2-2800-4661-b479-a0791aa0eacc&quo
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">297</span>
+    <span class="phpdocumentor-element-found-in__line">269</span>
 
     </aside>
 
@@ -647,7 +629,7 @@ client.secureProtectionCommit(&quot;yourCredential&quot;)
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">281</span>
+    <span class="phpdocumentor-element-found-in__line">253</span>
 
     </aside>
 
@@ -655,7 +637,7 @@ client.secureProtectionCommit(&quot;yourCredential&quot;)
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">secureProtectionInit</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$operation</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$protectionIds</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ttl</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">secureProtectionInit</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-SecureOperation.html"><abbr title="\Kastela\SecureOperation">SecureOperation</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$operation</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$protectionIds</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ttl</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -664,7 +646,7 @@ client.secureProtectionCommit(&quot;yourCredential&quot;)
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$operation</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-SecureOperation.html"><abbr title="\Kastela\SecureOperation">SecureOperation</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>operation secure protection operation mode</p>
@@ -721,15 +703,15 @@ client.secureProtectionInit([&quot;yourProtectionId&quot;], 5)
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">264</span>
+    <span class="phpdocumentor-element-found-in__line">205</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Remove vault data by vault token.</p>
+        <p class="phpdocumentor-summary">Remove vault data by vault $token.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">vaultDelete</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$vaultId</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$token</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">vaultDelete</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;int, <a href="classes/Kastela-VaultDeleteInput.html"><abbr title="\Kastela\VaultDeleteInput">VaultDeleteInput</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -737,20 +719,11 @@ client.secureProtectionInit([&quot;yourProtectionId&quot;], 5)
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$vaultId</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                <span class="phpdocumentor-signature__argument__name">$input</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;int, <a href="classes/Kastela-VaultDeleteInput.html"><abbr title="\Kastela\VaultDeleteInput">VaultDeleteInput</abbr></a>&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$token</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>vault token</p>
-</section>
-
             </dd>
             </dl>
 
@@ -761,7 +734,7 @@ client.secureProtectionInit([&quot;yourProtectionId&quot;], 5)
         <span class="phpdocumentor-signature__response_type">void</span>
                     &mdash;
                 <section class="phpdocumentor-description"><h5>Example</h5>
-<pre class="prettyprint"><code class="language-php">$kastelaClient-&gt;vault_delete(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0&quot;, &quot;331787a5-8930-4167-828f-7e783aeb158c&quot;);
+<pre class="prettyprint"><code class="language-php">$kastelaClient-&gt;vault_delete(new VaultDeleteInput(&quot;id&quot;, [&quot;token1&quot;, &quot;token2&quot;]));
 </code></pre>
 </section>
 
@@ -782,7 +755,7 @@ client.secureProtectionInit([&quot;yourProtectionId&quot;], 5)
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">202</span>
+    <span class="phpdocumentor-element-found-in__line">158</span>
 
     </aside>
 
@@ -790,7 +763,7 @@ client.secureProtectionInit([&quot;yourProtectionId&quot;], 5)
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">vaultFetch</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$vaultId</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$search</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">vaultFetch</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-VaultFetchInput.html"><abbr title="\Kastela\VaultFetchInput">VaultFetchInput</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, string&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -798,33 +771,11 @@ client.secureProtectionInit([&quot;yourProtectionId&quot;], 5)
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$vaultId</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                <span class="phpdocumentor-signature__argument__name">$input</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-VaultFetchInput.html"><abbr title="\Kastela\VaultFetchInput">VaultFetchInput</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$search</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>indexed column value</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$params</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>pagination parameters.
-$params = [
-'size' =&gt; (int) pagination size.,
-'after' =&gt; (string) pagination offset
-]</p>
-</section>
-
             </dd>
             </dl>
 
@@ -832,11 +783,11 @@ $params = [
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;int, string&gt;</span>
                     &mdash;
                 <section class="phpdocumentor-description"><h5>Example</h5>
-<pre class="prettyprint"><code class="language-php">// fetch vault data with indexed colum value &quot;jhon doe&quot;, return the list of vault token/id
-$ids = $kastelaClient-&gt;vault_fetch(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0&quot;, &quot;jhon doe&quot;, []);
+<pre class="prettyprint"><code class="language-php">// fetch vault data with indexed colum $value &quot;jhon doe&quot;, return the list of vault $token/id
+$tokens = $kastelaClient-&gt;vault_fetch(new VaultFetchInput($data[&quot;vault_id&quot;], $data[&quot;search&quot;], $data[&quot;size&quot;] | null, $data[&quot;after&quot;] | null));
 </code></pre>
 </section>
 
@@ -857,15 +808,15 @@ $ids = $kastelaClient-&gt;vault_fetch(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">230</span>
+    <span class="phpdocumentor-element-found-in__line">175</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Get batch vault data by vault token ids.</p>
+        <p class="phpdocumentor-summary">Get batch vault data by vault $token ids.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">vaultGet</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$vaultId</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ids</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">vaultGet</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;int, <a href="classes/Kastela-VaultGetInput.html"><abbr title="\Kastela\VaultGetInput">VaultGetInput</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, array&lt;int, mixed&gt;&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -873,20 +824,11 @@ $ids = $kastelaClient-&gt;vault_fetch(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$vaultId</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                <span class="phpdocumentor-signature__argument__name">$input</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;int, <a href="classes/Kastela-VaultGetInput.html"><abbr title="\Kastela\VaultGetInput">VaultGetInput</abbr></a>&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$ids</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>array of vault token</p>
-</section>
-
             </dd>
             </dl>
 
@@ -894,11 +836,11 @@ $ids = $kastelaClient-&gt;vault_fetch(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;int, array&lt;int, mixed&gt;&gt;</span>
                     &mdash;
                 <section class="phpdocumentor-description"><h5>Example</h5>
 <pre class="prettyprint"><code class="language-php">// get vault data
- $secrets = $kastelaClient-&gt;vault_get(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0&quot;, [&quot;d2657324-59f3-4bd4-92b0-c7f5e5ef7269&quot;, &quot;331787a5-8930-4167-828f-7e783aeb158c&quot;]);
+ $secrets = $kastelaClient-&gt;vault_get(new VaultGetInput(&quot;id&quot;, [&quot;tokens1&quot;, &quot;tokens2&quot;]));
 </code></pre>
 </section>
 
@@ -919,7 +861,7 @@ $ids = $kastelaClient-&gt;vault_fetch(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">178</span>
+    <span class="phpdocumentor-element-found-in__line">141</span>
 
     </aside>
 
@@ -927,7 +869,7 @@ $ids = $kastelaClient-&gt;vault_fetch(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">vaultStore</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$vaultId</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">vaultStore</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;int, <a href="classes/Kastela-VaultStoreInput.html"><abbr title="\Kastela\VaultStoreInput">VaultStoreInput</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, array&lt;int, string&gt;&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -935,20 +877,11 @@ $ids = $kastelaClient-&gt;vault_fetch(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$vaultId</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                <span class="phpdocumentor-signature__argument__name">$input</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;int, <a href="classes/Kastela-VaultStoreInput.html"><abbr title="\Kastela\VaultStoreInput">VaultStoreInput</abbr></a>&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$data</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>array of vault data</p>
-</section>
-
             </dd>
             </dl>
 
@@ -956,11 +889,11 @@ $ids = $kastelaClient-&gt;vault_fetch(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;int, array&lt;int, string&gt;&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>array of vault token</p>
+                <section class="phpdocumentor-description"><p>of vault $token</p>
 <h5>Example</h5>
-<pre class="prettyprint"><code class="language-php">$secret = $kastelaClient-&gt;vault_store(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0&quot;, [[&quot;name&quot; =&gt; $request-&gt;name, &quot;secret&quot; =&gt; $request-&gt;secret]])
+<pre class="prettyprint"><code class="language-php">$tokens = $kastelaClient-&gt;vault_store([new VaultStoreInput(&quot;id&quot;, [&quot;values1&quot;, &quot;values2&quot;])])
 </code></pre>
 </section>
 
@@ -981,15 +914,15 @@ $ids = $kastelaClient-&gt;vault_fetch(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">249</span>
+    <span class="phpdocumentor-element-found-in__line">191</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Update vault data by vault token.</p>
+        <p class="phpdocumentor-summary">Update vault data by vault $token.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">vaultUpdate</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$vaultId</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$token</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">vaultUpdate</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;int, <a href="classes/Kastela-VaultUpdateInput.html"><abbr title="\Kastela\VaultUpdateInput">VaultUpdateInput</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -997,29 +930,11 @@ $ids = $kastelaClient-&gt;vault_fetch(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$vaultId</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                <span class="phpdocumentor-signature__argument__name">$input</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;int, <a href="classes/Kastela-VaultUpdateInput.html"><abbr title="\Kastela\VaultUpdateInput">VaultUpdateInput</abbr></a>&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$token</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>vault token</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$data</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>update data</p>
-</section>
-
             </dd>
             </dl>
 
@@ -1030,7 +945,7 @@ $ids = $kastelaClient-&gt;vault_fetch(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0
         <span class="phpdocumentor-signature__response_type">void</span>
                     &mdash;
                 <section class="phpdocumentor-description"><h5>Example</h5>
-<pre class="prettyprint"><code class="language-php">$kastelaClient-&gt;vault_update(&quot;20e25596-db90-4945-ae0b-5886ba1bfdd0&quot;, &quot;331787a5-8930-4167-828f-7e783aeb158c&quot;, [&quot;name&quot; =&gt; &quot;jane d'arc&quot;, &quot;secret&quot; =&gt; &quot;this is new secret&quot;]);
+<pre class="prettyprint"><code class="language-php">$kastelaClient-&gt;vault_update([new VaultUpdateInput(&quot;id&quot;, [new VaultUpdateInputValues(&quot;token&quot;, [&quot;data&quot;=&gt;&quot;yourUpdateData&quot;])])]);
 </code></pre>
 </section>
 
