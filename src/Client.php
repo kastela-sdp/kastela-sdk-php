@@ -9,7 +9,7 @@ namespace Kastela;
 use Error;
 use JsonSerializable;
 
-define("expectedKastelaVersion", "v0.2");
+define("expectedKastelaVersion", "v0.3");
 define("protectionPath", "/api/protection/");
 define("vaultPath", "/api/vault/");
 define("privacyProxyPath", "/api/proxy");
