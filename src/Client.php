@@ -9,12 +9,16 @@ namespace Kastela;
 use Error;
 use JsonSerializable;
 
+use function PHPSTORM_META\type;
+
 define("expectedKastelaVersion", "v0.3");
 define("protectionPath", "/api/protection/");
 define("vaultPath", "/api/vault/");
 define("privacyProxyPath", "/api/proxy");
 define("secureChannelPath", "/api/secure-channel");
 define("securePath", "/api/secure");
+define("cryptoPath", "/api/crypto/");
+
 
 /**
  * Create a new Kastela Client instance for communicating with the server.
@@ -98,23 +102,6 @@ class Client
 
     list($header, $body) = explode("\r\n\r\n", $res, 2);
 
-    $headers = [];
-    foreach (explode("\r\n", $header) as $i => $line)
-      if ($i === 0)
-        $headers['http_code'] = $line;
-      else {
-        list($key, $value) = explode(': ', $line);
-
-        $headers[$key] = $value;
-      }
-    $splitCurrentV = explode('.', $headers['X-Kastela-Version']);
-    $currentVersion = $splitCurrentV[0] . '.' . $splitCurrentV[1];
-    if (version_compare($currentVersion, expectedKastelaVersion) != 0) {
-      if ($currentVersion != 'v0.0') {
-        throw new \Error("kastela server version mismatch, expected: " . expectedKastelaVersion . ".x, actual: " . $headers['X-Kastela-Version']);
-      }
-    }
-
     $body = json_decode($body, true);
     if (
       $body === null
@@ -126,8 +113,85 @@ class Client
     if (array_key_exists("error", $body)) {
       throw new \Error($body["error"]);
     }
-
     return $body;
+  }
+
+  /**
+   * @param list<CryptoEncryptInput>
+   */
+  public function cryptoEncrypt(array $input)
+  {
+    $rawData = $this->request(
+      "post",
+      $this->kastelaUrl . cryptoPath . "encrypt",
+      $input
+    );
+    return $rawData["ciphertexts"];
+  }
+
+  /**
+   * @param list<string> $input
+   */
+  public function cryptoDecrypt(array $input)
+  {
+    $rawData = $this->request(
+      "post",
+      $this->kastelaUrl . cryptoPath . "decrypt",
+      $input
+    );
+    return $rawData["plaintexts"];
+  }
+
+  /**
+   * @param list<CryptoHMACInput> $input
+   */
+  public function cryptoHMAC(array $input)
+  {
+    $rawData = $this->request(
+      "post",
+      $this->kastelaUrl . cryptoPath . "hmac",
+      $input
+    );
+    return $rawData["hashes"];
+  }
+
+  /**
+   * @param list<CryptoEqualInput> $input
+   */
+  public function cryptoEqual(array $input)
+  {
+    $rawData = $this->request(
+      "post",
+      $this->kastelaUrl . cryptoPath . "equal",
+      $input
+    );
+    return $rawData["result"];
+  }
+
+  /**
+   * @param list<CryptoSignInput> $input
+   */
+  public function cryptoSign(array $input)
+  {
+    $rawData = $this->request(
+      "post",
+      $this->kastelaUrl . cryptoPath . "sign",
+      $input
+    );
+    return $rawData["signatures"];
+  }
+
+  /**
+   * @param list<CryptoVerifyInput> $input
+   */
+  public function cryptoVerify(array $input)
+  {
+    $rawData = $this->request(
+      "post",
+      $this->kastelaUrl . cryptoPath . "verify",
+      $input
+    );
+    return $rawData["result"];
   }
 
   /** Store batch vault data on the server.
@@ -313,24 +377,26 @@ class Client
 
 enum SecureOperation: string
 {
-  const READ = 'READ';
-  const WRITE = 'WRITE';
+  case READ = 'READ';
+  case WRITE = 'WRITE';
 }
 
 enum PrivacyProxyRequestType: string
 {
-  const json = 'json';
-  const xml = 'xml';
+  case json = 'json';
+  case xml = 'xml';
 }
 
 enum PrivacyProxyRequestMethod: string
 {
-  const get = 'get';
-  const post = 'post';
-  const put = 'put';
-  const delete = 'delete';
-  const patch = 'patch';
+  case get = 'get';
+  case post = 'post';
+  case put = 'put';
+  case delete = 'delete';
+  case patch = 'patch';
 }
+
+
 
 class VaultStoreInput implements JsonSerializable
 {
@@ -450,7 +516,7 @@ class VaultUpdateInput implements JsonSerializable
   }
 }
 
-class VaultUpdateInputValues
+class VaultUpdateInputValues implements JsonSerializable
 {
   public string $token;
   public mixed $value;
@@ -459,6 +525,14 @@ class VaultUpdateInputValues
   {
     $this->token = $token;
     $this->value = $value;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "token" => $this->token,
+      "value" => $this->value
+    ];
   }
 }
 
@@ -504,6 +578,131 @@ class ProtectionOpenInput implements JsonSerializable
     return [
       "protection_id" => $this->protectionID,
       "tokens" => $this->tokens
+    ];
+  }
+}
+
+enum EncryptionMode: string
+{
+  case AES_GCM = "AES_GCM";
+  case CHACHA20_POLY1305 = "CHACHA20_POLY1305";
+  case XCHACHA20_POLY1305 = "XCHACHA20_POLY1305";
+}
+
+class CryptoEncryptInput implements JsonSerializable
+{
+
+  private string $keyID;
+  private EncryptionMode $mode;
+  private array $plaintexts;
+
+  public function __construct(string $keyID, EncryptionMode $mode, array $plaintexts)
+  {
+    $this->keyID = $keyID;
+    $this->mode = $mode;
+    $this->plaintexts = $plaintexts;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "key_id" => $this->keyID,
+      "mode" => $this->mode,
+      "plaintexts" => $this->plaintexts
+    ];
+  }
+}
+
+class CryptoEqualInput implements JsonSerializable
+{
+  private string $hash;
+  private mixed $value;
+
+  public function __construct(string $hash, mixed $value)
+  {
+    $this->hash = $hash;
+    $this->value = $value;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "hash" => $this->hash,
+      "value" => $this->value
+    ];
+  }
+}
+
+class CryptoSignInput implements JsonSerializable
+{
+  private string $keyID;
+  private array $values;
+
+  public function __construct(string $keyID, array $values)
+  {
+    $this->keyID = $keyID;
+    $this->values = $values;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "key_id" => $this->keyID,
+      "values" => $this->values
+    ];
+  }
+}
+
+class CryptoVerifyInput implements JsonSerializable
+{
+  private string $signature;
+  private mixed $value;
+
+  public function __construct(string $signature, mixed $value)
+  {
+    $this->signature = $signature;
+    $this->value = $value;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "signature" => $this->signature,
+      "value" => $this->value
+    ];
+  }
+}
+
+enum HashMode: string
+{
+  case BLAKE2B_256 = "BLAKE2B_256";
+  case BLAKE2B_512 = "BLAKE2B_512";
+  case BLAKE2S_256 = "BLAKE2S_256";
+  case BLAKE3_256 = "BLAKE3_256";
+  case SHA256 = "SHA256";
+  case SHA512 = "SHA512";
+  case SHA3_256 = "SHA3_256";
+  case SHA3_512 = "SHA3_512";
+}
+class CryptoHMACInput implements JsonSerializable
+{
+  private string $keyID;
+  private HashMode $mode;
+  private array $values;
+
+  public function __construct(string $keyID, HashMode $mode, array $values)
+  {
+    $this->keyID = $keyID;
+    $this->mode = $mode;
+    $this->values = $values;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "key_id" => $this->keyID,
+      "mode" => $this->mode,
+      "values" => $this->values
     ];
   }
 }
