@@ -90,7 +90,7 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    VaultUpdateInputValues
+    CryptoSignInput
 
     
             <div class="phpdocumentor-element__package">
@@ -114,7 +114,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">519</span>
+    <span class="phpdocumentor-element-found-in__line">636</span>
 
     </aside>
 
@@ -126,7 +126,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="classes/Kastela-VaultUpdateInputValues.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/Kastela-CryptoSignInput.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -134,7 +134,7 @@
 
     <h4 id="toc-interfaces">
         Interfaces
-        <a href="classes/Kastela-VaultUpdateInputValues.html#toc-interfaces" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Kastela-CryptoSignInput.html#toc-interfaces" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <dl class="phpdocumentor-table-of-contents">
@@ -147,38 +147,38 @@
 
 <h4 id="toc-properties">
     Properties
-    <a href="classes/Kastela-VaultUpdateInputValues.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/Kastela-CryptoSignInput.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/Kastela-VaultUpdateInputValues.html#property_token">$token</a>
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/Kastela-CryptoSignInput.html#property_keyID">$keyID</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
 
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/Kastela-VaultUpdateInputValues.html#property_value">$value</a>
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/Kastela-CryptoSignInput.html#property_values">$values</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
 
     </dl>
 
 <h4 id="toc-methods">
     Methods
-    <a href="classes/Kastela-VaultUpdateInputValues.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/Kastela-CryptoSignInput.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Kastela-VaultUpdateInputValues.html#method___construct">__construct()</a>
+    <a href="classes/Kastela-CryptoSignInput.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Kastela-VaultUpdateInputValues.html#method_jsonSerialize">jsonSerialize()</a>
+    <a href="classes/Kastela-CryptoSignInput.html#method_jsonSerialize">jsonSerialize()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
@@ -194,19 +194,19 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/Kastela-VaultUpdateInputValues.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Kastela-CryptoSignInput.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
         class="
             phpdocumentor-element
             -property
-            -public
+            -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_token">
-        $token
-        <a href="classes/Kastela-VaultUpdateInputValues.html#property_token" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_keyID">
+        $keyID
+        <a href="classes/Kastela-CryptoSignInput.html#property_keyID" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
@@ -214,15 +214,15 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">521</span>
+    <span class="phpdocumentor-element-found-in__line">638</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$token</span>
+    <span class="phpdocumentor-signature__name">$keyID</span>
     </code>
 
     
@@ -234,12 +234,12 @@
         class="
             phpdocumentor-element
             -property
-            -public
+            -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_value">
-        $value
-        <a href="classes/Kastela-VaultUpdateInputValues.html#property_value" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_values">
+        $values
+        <a href="classes/Kastela-CryptoSignInput.html#property_values" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
@@ -247,15 +247,15 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">522</span>
+    <span class="phpdocumentor-element-found-in__line">639</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$value</span>
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
+    <span class="phpdocumentor-signature__name">$values</span>
     </code>
 
     
@@ -268,7 +268,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/Kastela-VaultUpdateInputValues.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Kastela-CryptoSignInput.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -279,20 +279,20 @@
 >
     <h4 class="phpdocumentor-element__name" id="method___construct">
         __construct()
-        <a href="classes/Kastela-VaultUpdateInputValues.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Kastela-CryptoSignInput.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">524</span>
+    <span class="phpdocumentor-element-found-in__line">641</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$token</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$keyID</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$values</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -300,15 +300,15 @@
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$token</span>
+                <span class="phpdocumentor-signature__argument__name">$keyID</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$value</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                <span class="phpdocumentor-signature__argument__name">$values</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -327,13 +327,13 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_jsonSerialize">
         jsonSerialize()
-        <a href="classes/Kastela-VaultUpdateInputValues.html#method_jsonSerialize" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Kastela-CryptoSignInput.html#method_jsonSerialize" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">530</span>
+    <span class="phpdocumentor-element-found-in__line">647</span>
 
     </aside>
 
@@ -455,24 +455,24 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                            <li><a href="classes/Kastela-VaultUpdateInputValues.html#toc-properties">Properties</a></li>
-                                                            <li><a href="classes/Kastela-VaultUpdateInputValues.html#toc-methods">Methods</a></li>
+                                                            <li><a href="classes/Kastela-CryptoSignInput.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/Kastela-CryptoSignInput.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
             
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/Kastela-VaultUpdateInputValues.html#property_token">$token<a href="classes/Kastela-VaultUpdateInputValues.html"></li>
-                                                    <li><a href="classes/Kastela-VaultUpdateInputValues.html#property_value">$value<a href="classes/Kastela-VaultUpdateInputValues.html"></li>
+                                                    <li><a href="classes/Kastela-CryptoSignInput.html#property_keyID">$keyID<a href="classes/Kastela-CryptoSignInput.html"></li>
+                                                    <li><a href="classes/Kastela-CryptoSignInput.html#property_values">$values<a href="classes/Kastela-CryptoSignInput.html"></li>
                                             </ul>
                 </li>
             
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/Kastela-VaultUpdateInputValues.html#method___construct">__construct()</a></li>
-                                            <li><a href="classes/Kastela-VaultUpdateInputValues.html#method_jsonSerialize">jsonSerialize()</a></li>
+                                            <li><a href="classes/Kastela-CryptoSignInput.html#method___construct">__construct()</a></li>
+                                            <li><a href="classes/Kastela-CryptoSignInput.html#method_jsonSerialize">jsonSerialize()</a></li>
                                     </ul>
             </li>
                     </ul>
@@ -492,7 +492,7 @@
     </section>
 </section>
         </div>
-        <a href="classes/Kastela-VaultUpdateInputValues.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Kastela-CryptoSignInput.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
