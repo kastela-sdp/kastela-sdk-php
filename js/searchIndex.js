@@ -1,11 +1,6 @@
 Search.appendIndex(
     [
                 {
-            "fqsen": "\\expectedKastelaVersion",
-            "name": "expectedKastelaVersion",
-            "summary": "",
-            "url": "namespaces/default.html#constant_expectedKastelaVersion"
-        },                {
             "fqsen": "\\protectionPath",
             "name": "protectionPath",
             "summary": "",
@@ -16,15 +11,10 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#constant_vaultPath"
         },                {
-            "fqsen": "\\privacyProxyPath",
-            "name": "privacyProxyPath",
+            "fqsen": "\\proxyPath",
+            "name": "proxyPath",
             "summary": "",
-            "url": "namespaces/default.html#constant_privacyProxyPath"
-        },                {
-            "fqsen": "\\secureChannelPath",
-            "name": "secureChannelPath",
-            "summary": "",
-            "url": "namespaces/default.html#constant_secureChannelPath"
+            "url": "namespaces/default.html#constant_proxyPath"
         },                {
             "fqsen": "\\securePath",
             "name": "securePath",
