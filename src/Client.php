@@ -11,11 +11,9 @@ use JsonSerializable;
 
 use function PHPSTORM_META\type;
 
-define("expectedKastelaVersion", "v0.3");
 define("protectionPath", "/api/protection/");
 define("vaultPath", "/api/vault/");
-define("privacyProxyPath", "/api/proxy");
-define("secureChannelPath", "/api/secure-channel");
+define("proxyPath", "/api/proxy");
 define("securePath", "/api/secure");
 define("cryptoPath", "/api/crypto/");
 
@@ -25,7 +23,7 @@ define("cryptoPath", "/api/crypto/");
  * Require server information and return client instance.
  * ##### Example
  * ```php
- * $kastelaClient = new Client("server.url", "ca/path.crt", "client/credential/path.crt", "client/credential/path.key", );
+ * $kastelaClient = new Client("server.url", "credentials/ca.crt", "credentials/client.crt", "credentials/client.key", );
  * ```
  */
 class Client
@@ -363,7 +361,7 @@ class Client
     if ($type === "xml") {
       throw new \Error("rootTag is required for xml");
     }
-    $kastelUrl = $this->kastelaUrl . privacyProxyPath;
+    $kastelUrl = $this->kastelaUrl . proxyPath;
     $res = $this->request('post', $kastelUrl, [
       "type" => $type,
       "url" => $url,
@@ -395,8 +393,6 @@ enum PrivacyProxyRequestMethod: string
   case delete = 'delete';
   case patch = 'patch';
 }
-
-
 
 class VaultStoreInput implements JsonSerializable
 {
