@@ -17,7 +17,6 @@ define("proxyPath", "/api/proxy");
 define("securePath", "/api/secure");
 define("cryptoPath", "/api/crypto/");
 
-
 /**
  * Create a new Kastela Client instance for communicating with the server.
  * Require server information and return client instance.
@@ -334,6 +333,24 @@ class Client
     $this->request('post', $url, ["credential" => $credential]);
   }
 
+  /** Initialize secure vault.
+   * @param SecureOperation $operation operation secure vault operation mode
+   * @param array $vaultIds vaultIds array of vault id
+   * @param int $ttl ttl time to live in minutes
+   * @return array secure vault credential
+   * ##### Example
+   * ```php
+   * 	// begin secure vault
+   * client.secureVaultInit(["yourVaultId"], 5)
+   * ```
+   */
+  public function secureVaultInit(SecureOperation $operation, array $vaultIds, int $ttl)
+  {
+    $url = $this->kastelaUrl . securePath . '/vault/init';
+    $res = $this->request('post', $url, ["operation" => $operation, "vault_ids" => $vaultIds, "ttl" => $ttl]);
+    return ["credential" => $res["credential"]];
+  }
+
   /** Proxying Request.
    * @param PrivacyProxyRequestType $type request body type "json"|"xml"
    * @param string $url request url
@@ -587,7 +604,6 @@ enum EncryptionMode: string
 
 class CryptoEncryptInput implements JsonSerializable
 {
-
   private string $keyID;
   private EncryptionMode $mode;
   private array $plaintexts;
@@ -680,6 +696,7 @@ enum HashMode: string
   case SHA3_256 = "SHA3_256";
   case SHA3_512 = "SHA3_512";
 }
+
 class CryptoHMACInput implements JsonSerializable
 {
   private string $keyID;
