@@ -111,6 +111,11 @@ Search.appendIndex(
             "summary": "Commit\u0020secure\u0020protection.",
             "url": "classes/Kastela-Client.html#method_secureProtectionCommit"
         },                {
+            "fqsen": "\\Kastela\\Client\u003A\u003AsecureVaultInit\u0028\u0029",
+            "name": "secureVaultInit",
+            "summary": "Initialize\u0020secure\u0020vault.",
+            "url": "classes/Kastela-Client.html#method_secureVaultInit"
+        },                {
             "fqsen": "\\Kastela\\Client\u003A\u003AprivacyProxyRequest\u0028\u0029",
             "name": "privacyProxyRequest",
             "summary": "Proxying\u0020Request.",
