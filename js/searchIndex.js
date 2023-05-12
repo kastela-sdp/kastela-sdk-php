@@ -536,45 +536,55 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Kastela-EncryptionMode.html"
         },                {
-            "fqsen": "\\Kastela\\EncryptionMode\u003A\u003AAES_GCM",
-            "name": "AES_GCM",
+            "fqsen": "\\Kastela\\EncryptionMode\u003A\u003AAESGCM",
+            "name": "AESGCM",
             "summary": "",
-            "url": "classes/Kastela-EncryptionMode.html#enumcase_AES_GCM"
+            "url": "classes/Kastela-EncryptionMode.html#enumcase_AESGCM"
         },                {
-            "fqsen": "\\Kastela\\EncryptionMode\u003A\u003ACHACHA20_POLY1305",
-            "name": "CHACHA20_POLY1305",
+            "fqsen": "\\Kastela\\EncryptionMode\u003A\u003AChaCha20Poly1305",
+            "name": "ChaCha20Poly1305",
             "summary": "",
-            "url": "classes/Kastela-EncryptionMode.html#enumcase_CHACHA20_POLY1305"
+            "url": "classes/Kastela-EncryptionMode.html#enumcase_ChaCha20Poly1305"
         },                {
-            "fqsen": "\\Kastela\\EncryptionMode\u003A\u003AXCHACHA20_POLY1305",
-            "name": "XCHACHA20_POLY1305",
+            "fqsen": "\\Kastela\\EncryptionMode\u003A\u003AXChaCha20Poly1305",
+            "name": "XChaCha20Poly1305",
             "summary": "",
-            "url": "classes/Kastela-EncryptionMode.html#enumcase_XCHACHA20_POLY1305"
+            "url": "classes/Kastela-EncryptionMode.html#enumcase_XChaCha20Poly1305"
+        },                {
+            "fqsen": "\\Kastela\\EncryptionMode\u003A\u003ARSAOAEP",
+            "name": "RSAOAEP",
+            "summary": "",
+            "url": "classes/Kastela-EncryptionMode.html#enumcase_RSAOAEP"
         },                {
             "fqsen": "\\Kastela\\HashMode",
             "name": "HashMode",
             "summary": "",
             "url": "classes/Kastela-HashMode.html"
         },                {
-            "fqsen": "\\Kastela\\HashMode\u003A\u003ABLAKE2B_256",
-            "name": "BLAKE2B_256",
+            "fqsen": "\\Kastela\\HashMode\u003A\u003ABlake2b256",
+            "name": "Blake2b256",
             "summary": "",
-            "url": "classes/Kastela-HashMode.html#enumcase_BLAKE2B_256"
+            "url": "classes/Kastela-HashMode.html#enumcase_Blake2b256"
         },                {
-            "fqsen": "\\Kastela\\HashMode\u003A\u003ABLAKE2B_512",
-            "name": "BLAKE2B_512",
+            "fqsen": "\\Kastela\\HashMode\u003A\u003ABlake2b512",
+            "name": "Blake2b512",
             "summary": "",
-            "url": "classes/Kastela-HashMode.html#enumcase_BLAKE2B_512"
+            "url": "classes/Kastela-HashMode.html#enumcase_Blake2b512"
         },                {
-            "fqsen": "\\Kastela\\HashMode\u003A\u003ABLAKE2S_256",
-            "name": "BLAKE2S_256",
+            "fqsen": "\\Kastela\\HashMode\u003A\u003ABlake2s256",
+            "name": "Blake2s256",
             "summary": "",
-            "url": "classes/Kastela-HashMode.html#enumcase_BLAKE2S_256"
+            "url": "classes/Kastela-HashMode.html#enumcase_Blake2s256"
         },                {
-            "fqsen": "\\Kastela\\HashMode\u003A\u003ABLAKE3_256",
-            "name": "BLAKE3_256",
+            "fqsen": "\\Kastela\\HashMode\u003A\u003ABlake3256",
+            "name": "Blake3256",
             "summary": "",
-            "url": "classes/Kastela-HashMode.html#enumcase_BLAKE3_256"
+            "url": "classes/Kastela-HashMode.html#enumcase_Blake3256"
+        },                {
+            "fqsen": "\\Kastela\\HashMode\u003A\u003ABlake3512",
+            "name": "Blake3512",
+            "summary": "",
+            "url": "classes/Kastela-HashMode.html#enumcase_Blake3512"
         },                {
             "fqsen": "\\Kastela\\HashMode\u003A\u003ASHA256",
             "name": "SHA256",
@@ -586,15 +596,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Kastela-HashMode.html#enumcase_SHA512"
         },                {
-            "fqsen": "\\Kastela\\HashMode\u003A\u003ASHA3_256",
-            "name": "SHA3_256",
+            "fqsen": "\\Kastela\\HashMode\u003A\u003ASHA3256",
+            "name": "SHA3256",
             "summary": "",
-            "url": "classes/Kastela-HashMode.html#enumcase_SHA3_256"
+            "url": "classes/Kastela-HashMode.html#enumcase_SHA3256"
         },                {
-            "fqsen": "\\Kastela\\HashMode\u003A\u003ASHA3_512",
-            "name": "SHA3_512",
+            "fqsen": "\\Kastela\\HashMode\u003A\u003ASHA3512",
+            "name": "SHA3512",
             "summary": "",
-            "url": "classes/Kastela-HashMode.html#enumcase_SHA3_512"
+            "url": "classes/Kastela-HashMode.html#enumcase_SHA3512"
         },                {
             "fqsen": "\\",
             "name": "\\",
