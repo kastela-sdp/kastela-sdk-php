@@ -1,6 +1,6 @@
 # Kastela SDK for PHP
 
-## Related LInk
+## Related Link
 
 - [API docs](https://kastela-sdp.github.io/kastela-sdk-php/)
 - [Packagist link](https://packagist.org/packages/kastela-sdp/kastela-sdk-php)
