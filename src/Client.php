@@ -597,9 +597,10 @@ class ProtectionOpenInput implements JsonSerializable
 
 enum EncryptionMode: string
 {
-  case AES_GCM = "AES_GCM";
-  case CHACHA20_POLY1305 = "CHACHA20_POLY1305";
-  case XCHACHA20_POLY1305 = "XCHACHA20_POLY1305";
+  case AESGCM = "AES_GCM";
+  case ChaCha20Poly1305 = "CHACHA20_POLY1305";
+  case XChaCha20Poly1305 = "XCHACHA20_POLY1305";
+  case RSAOAEP = "RSA_OAEP";
 }
 
 class CryptoEncryptInput implements JsonSerializable
@@ -687,14 +688,15 @@ class CryptoVerifyInput implements JsonSerializable
 
 enum HashMode: string
 {
-  case BLAKE2B_256 = "BLAKE2B_256";
-  case BLAKE2B_512 = "BLAKE2B_512";
-  case BLAKE2S_256 = "BLAKE2S_256";
-  case BLAKE3_256 = "BLAKE3_256";
+  case Blake2b256 = "BLAKE2B_256";
+  case Blake2b512 = "BLAKE2B_512";
+  case Blake2s256 = "BLAKE2S_256";
+  case Blake3256 = "BLAKE3_256";
+  case Blake3512 = "BLAKE3_512";
   case SHA256 = "SHA256";
   case SHA512 = "SHA512";
-  case SHA3_256 = "SHA3_256";
-  case SHA3_512 = "SHA3_512";
+  case SHA3256 = "SHA3_256";
+  case SHA3512 = "SHA3_512";
 }
 
 class CryptoHMACInput implements JsonSerializable
