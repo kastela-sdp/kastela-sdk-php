@@ -224,6 +224,24 @@ class Client
     return $res["tokens"];
   }
 
+  /** Count vault data
+   * @param VaultCountInput input input
+   * @param string input.vaultID vault id
+   * @param string input.search data to search
+   * @return array<string>
+   * #### Example
+   * ```php
+   * $result = $kastelaClient->vaultCount(new VaultCountInput("your-vault-id", "foo"));
+   * ```
+   */
+  public function vaultCount(VaultCountInput $input)
+  {
+    $url = $this->kastelaUrl . vaultPath . "count";
+
+    $res = $this->request('post', $url, $input);
+    return $res["count"];
+  }
+
   /** Get batch vault data by vault $token ids.
    * @param list<VaultGetInput> $input
    * @return list<list<mixed>>
@@ -290,7 +308,7 @@ class Client
    * ##### Example
    * ```php
    * // decrypt data with id 1,2,3,4,5
-   * $data = kastelaClient->protection_open(new ProtectionOpenInput("id", ["token1", "token2"])]);
+   * $data = $kastelaClient->protection_open(new ProtectionOpenInput("id", ["token1", "token2"])]);
    * ```
    */
   public function protectionOpen(array $input)
@@ -298,6 +316,41 @@ class Client
     $url = $this->kastelaUrl . protectionPath . 'open';
     $res = $this->request('post', $url, $input);
     return $res["data"];
+  }
+
+  /** Fetch protection data
+   * @param ProtectionFetchInput input protection fetch input data
+   * @param string input.protectionID protection id
+   * @param mixed input.search data to search
+   * @return array<mixed> array of primary keys
+   * ##### Example
+   * ```php
+   * $result = $kastelaClient->protectionFetch(new ProtectionFetchInput("your-protection-id", "foo");
+   * ```
+   */
+  public function protectionFetch(ProtectionFetchInput $input)
+  {
+    $url = $this->kastelaUrl . protectionPath . "fetch";
+    $res = $this->request('post', $url, $input);
+    return $res["primary_keys"];
+  }
+
+  /** Count protection data
+   * @param ProtectionCountInput input protection count input data
+   * @param string input.protectionID protection id
+   * @param mixed input.search data to search
+   * @return int count of data
+   * ##### Example  
+   * ##### Example
+   * ```php
+   * $result = $kastelaClient->protectionCount(new ProtectionCountInput("your-protection-id", "foo");
+   * ```
+   */
+  public function protectionCount(ProtectionCountInput $input)
+  {
+    $url = $this->kastelaUrl . protectionPath . "count";
+    $res = $this->request('post', $url, $input);
+    return $res["count"];
   }
 
   /** Initialize secure protection.
@@ -506,6 +559,29 @@ class VaultGetInput implements JsonSerializable
   }
 }
 
+class VaultCountInput implements JsonSerializable
+{
+  public string $vaultID;
+  public mixed $search;
+
+  /**
+   * @param mixed $search
+   */
+  public function __construct(string $vaultID, mixed $search)
+  {
+    $this->vaultID = $vaultID;
+    $this->search = $search;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "vault_id" => $this->vaultID,
+      "search" => $this->search
+    ];
+  }
+}
+
 class VaultUpdateInput implements JsonSerializable
 {
   public string $vaultID;
@@ -591,6 +667,52 @@ class ProtectionOpenInput implements JsonSerializable
     return [
       "protection_id" => $this->protectionID,
       "tokens" => $this->tokens
+    ];
+  }
+}
+
+class ProtectionFetchInput implements JsonSerializable
+{
+  private string $protectionID;
+  private mixed $search;
+
+  /**
+   * @param mixed $tokens
+   */
+  public function __construct(string $protectionID, mixed $search)
+  {
+    $this->protectionID = $protectionID;
+    $this->search = $search;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "protection_id" => $this->protectionID,
+      "search" => $this->search
+    ];
+  }
+}
+
+class ProtectionCountInput implements JsonSerializable
+{
+  private string $protectionID;
+  private mixed $search;
+
+  /**
+   * @param mixed $tokens
+   */
+  public function __construct(string $protectionID, mixed $search)
+  {
+    $this->protectionID = $protectionID;
+    $this->search = $search;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "protection_id" => $this->protectionID,
+      "search" => $this->search
     ];
   }
 }
