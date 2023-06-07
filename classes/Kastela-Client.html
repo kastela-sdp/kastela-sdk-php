@@ -211,6 +211,20 @@
 <dd>Proxying Request.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Kastela-Client.html#method_protectionCount">protectionCount()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Count protection data</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Kastela-Client.html#method_protectionFetch">protectionFetch()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Fetch protection data</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Kastela-Client.html#method_protectionOpen">protectionOpen()</a>
     <span>
                                 &nbsp;: array&lt;int, array&lt;int, mixed&gt;&gt;    </span>
@@ -244,6 +258,13 @@
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 <dd>Initialize secure vault.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Kastela-Client.html#method_vaultCount">vaultCount()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, string&gt;    </span>
+</dt>
+<dd>Count vault data</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Kastela-Client.html#method_vaultDelete">vaultDelete()</a>
@@ -665,7 +686,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">376</span>
+    <span class="phpdocumentor-element-found-in__line">429</span>
 
     </aside>
 
@@ -750,6 +771,113 @@ $common = [
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_protectionCount">
+        protectionCount()
+        <a href="classes/Kastela-Client.html#method_protectionCount" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">349</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Count protection data</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">protectionCount</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-ProtectionCountInput.html"><abbr title="\Kastela\ProtectionCountInput">ProtectionCountInput</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$input</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-ProtectionCountInput.html"><abbr title="\Kastela\ProtectionCountInput">ProtectionCountInput</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>count of data</p>
+<h5>Example</h5>
+<h5>Example</h5>
+<pre class="prettyprint"><code class="language-php">$result = $kastelaClient-&gt;protectionCount(new ProtectionCountInput(&quot;your-protection-id&quot;, &quot;foo&quot;);
+</code></pre>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_protectionFetch">
+        protectionFetch()
+        <a href="classes/Kastela-Client.html#method_protectionFetch" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">331</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Fetch protection data</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">protectionFetch</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-ProtectionFetchInput.html"><abbr title="\Kastela\ProtectionFetchInput">ProtectionFetchInput</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$input</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-ProtectionFetchInput.html"><abbr title="\Kastela\ProtectionFetchInput">ProtectionFetchInput</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>array of primary keys</p>
+<h5>Example</h5>
+<pre class="prettyprint"><code class="language-php">$result = $kastelaClient-&gt;protectionFetch(new ProtectionFetchInput(&quot;your-protection-id&quot;, &quot;foo&quot;);
+</code></pre>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_protectionOpen">
         protectionOpen()
         <a href="classes/Kastela-Client.html#method_protectionOpen" class="headerlink"><i class="fas fa-link"></i></a>
@@ -758,7 +886,7 @@ $common = [
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">296</span>
+    <span class="phpdocumentor-element-found-in__line">314</span>
 
     </aside>
 
@@ -791,7 +919,7 @@ $common = [
                 <section class="phpdocumentor-description"><p>$array of decrypted data refers to ids</p>
 <h5>Example</h5>
 <pre class="prettyprint"><code class="language-php">// decrypt data with id 1,2,3,4,5
-$data = kastelaClient-&gt;protection_open(new ProtectionOpenInput(&quot;id&quot;, [&quot;token1&quot;, &quot;token2&quot;])]);
+$data = $kastelaClient-&gt;protection_open(new ProtectionOpenInput(&quot;id&quot;, [&quot;token1&quot;, &quot;token2&quot;])]);
 </code></pre>
 </section>
 
@@ -812,7 +940,7 @@ $data = kastelaClient-&gt;protection_open(new ProtectionOpenInput(&quot;id&quot;
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">281</span>
+    <span class="phpdocumentor-element-found-in__line">299</span>
 
     </aside>
 
@@ -865,7 +993,7 @@ kastelaClient-&gt;protection_seal([new ProtectionSealInput(&quot;id&quot;, [&quo
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">330</span>
+    <span class="phpdocumentor-element-found-in__line">383</span>
 
     </aside>
 
@@ -918,7 +1046,7 @@ client.secureProtectionCommit(&quot;yourCredential&quot;)
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">314</span>
+    <span class="phpdocumentor-element-found-in__line">367</span>
 
     </aside>
 
@@ -992,7 +1120,7 @@ client.secureProtectionInit([&quot;yourProtectionId&quot;], 5)
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">347</span>
+    <span class="phpdocumentor-element-found-in__line">400</span>
 
     </aside>
 
@@ -1058,6 +1186,58 @@ client.secureVaultInit([&quot;yourVaultId&quot;], 5)
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_vaultCount">
+        vaultCount()
+        <a href="classes/Kastela-Client.html#method_vaultCount" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">237</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Count vault data</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">vaultCount</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-VaultCountInput.html"><abbr title="\Kastela\VaultCountInput">VaultCountInput</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$input</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Kastela-VaultCountInput.html"><abbr title="\Kastela\VaultCountInput">VaultCountInput</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><h4>Example</h4>
+<pre class="prettyprint"><code class="language-php">$result = $kastelaClient-&gt;vaultCount(new VaultCountInput(&quot;your-vault-id&quot;, &quot;foo&quot;));
+</code></pre>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_vaultDelete">
         vaultDelete()
         <a href="classes/Kastela-Client.html#method_vaultDelete" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1066,7 +1246,7 @@ client.secureVaultInit([&quot;yourVaultId&quot;], 5)
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">266</span>
+    <span class="phpdocumentor-element-found-in__line">284</span>
 
     </aside>
 
@@ -1171,7 +1351,7 @@ $tokens = $kastelaClient-&gt;vault_fetch(new VaultFetchInput($data[&quot;vault_i
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">236</span>
+    <span class="phpdocumentor-element-found-in__line">254</span>
 
     </aside>
 
@@ -1277,7 +1457,7 @@ $tokens = $kastelaClient-&gt;vault_fetch(new VaultFetchInput($data[&quot;vault_i
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Client.php"><a href="files/src-client.html"><abbr title="src/Client.php">Client.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">252</span>
+    <span class="phpdocumentor-element-found-in__line">270</span>
 
     </aside>
 
@@ -1443,11 +1623,14 @@ $tokens = $kastelaClient-&gt;vault_fetch(new VaultFetchInput($data[&quot;vault_i
                                             <li><a href="classes/Kastela-Client.html#method_cryptoSign">cryptoSign()</a></li>
                                             <li><a href="classes/Kastela-Client.html#method_cryptoVerify">cryptoVerify()</a></li>
                                             <li><a href="classes/Kastela-Client.html#method_privacyProxyRequest">privacyProxyRequest()</a></li>
+                                            <li><a href="classes/Kastela-Client.html#method_protectionCount">protectionCount()</a></li>
+                                            <li><a href="classes/Kastela-Client.html#method_protectionFetch">protectionFetch()</a></li>
                                             <li><a href="classes/Kastela-Client.html#method_protectionOpen">protectionOpen()</a></li>
                                             <li><a href="classes/Kastela-Client.html#method_protectionSeal">protectionSeal()</a></li>
                                             <li><a href="classes/Kastela-Client.html#method_secureProtectionCommit">secureProtectionCommit()</a></li>
                                             <li><a href="classes/Kastela-Client.html#method_secureProtectionInit">secureProtectionInit()</a></li>
                                             <li><a href="classes/Kastela-Client.html#method_secureVaultInit">secureVaultInit()</a></li>
+                                            <li><a href="classes/Kastela-Client.html#method_vaultCount">vaultCount()</a></li>
                                             <li><a href="classes/Kastela-Client.html#method_vaultDelete">vaultDelete()</a></li>
                                             <li><a href="classes/Kastela-Client.html#method_vaultFetch">vaultFetch()</a></li>
                                             <li><a href="classes/Kastela-Client.html#method_vaultGet">vaultGet()</a></li>

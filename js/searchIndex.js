@@ -76,6 +76,11 @@ Search.appendIndex(
             "summary": "Search\u0020vault\u0020data\u0020by\u0020indexed\u0020column.",
             "url": "classes/Kastela-Client.html#method_vaultFetch"
         },                {
+            "fqsen": "\\Kastela\\Client\u003A\u003AvaultCount\u0028\u0029",
+            "name": "vaultCount",
+            "summary": "Count\u0020vault\u0020data",
+            "url": "classes/Kastela-Client.html#method_vaultCount"
+        },                {
             "fqsen": "\\Kastela\\Client\u003A\u003AvaultGet\u0028\u0029",
             "name": "vaultGet",
             "summary": "Get\u0020batch\u0020vault\u0020data\u0020by\u0020vault\u0020\u0024token\u0020ids.",
@@ -100,6 +105,16 @@ Search.appendIndex(
             "name": "protectionOpen",
             "summary": "Decrypt\u0020data\u0020protection\u0020by\u0020protection\u0020data\u0020ids.",
             "url": "classes/Kastela-Client.html#method_protectionOpen"
+        },                {
+            "fqsen": "\\Kastela\\Client\u003A\u003AprotectionFetch\u0028\u0029",
+            "name": "protectionFetch",
+            "summary": "Fetch\u0020protection\u0020data",
+            "url": "classes/Kastela-Client.html#method_protectionFetch"
+        },                {
+            "fqsen": "\\Kastela\\Client\u003A\u003AprotectionCount\u0028\u0029",
+            "name": "protectionCount",
+            "summary": "Count\u0020protection\u0020data",
+            "url": "classes/Kastela-Client.html#method_protectionCount"
         },                {
             "fqsen": "\\Kastela\\Client\u003A\u003AsecureProtectionInit\u0028\u0029",
             "name": "secureProtectionInit",
@@ -236,6 +251,31 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Kastela-VaultGetInput.html#property_tokens"
         },                {
+            "fqsen": "\\Kastela\\VaultCountInput",
+            "name": "VaultCountInput",
+            "summary": "",
+            "url": "classes/Kastela-VaultCountInput.html"
+        },                {
+            "fqsen": "\\Kastela\\VaultCountInput\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Kastela-VaultCountInput.html#method___construct"
+        },                {
+            "fqsen": "\\Kastela\\VaultCountInput\u003A\u003AjsonSerialize\u0028\u0029",
+            "name": "jsonSerialize",
+            "summary": "",
+            "url": "classes/Kastela-VaultCountInput.html#method_jsonSerialize"
+        },                {
+            "fqsen": "\\Kastela\\VaultCountInput\u003A\u003A\u0024vaultID",
+            "name": "vaultID",
+            "summary": "",
+            "url": "classes/Kastela-VaultCountInput.html#property_vaultID"
+        },                {
+            "fqsen": "\\Kastela\\VaultCountInput\u003A\u003A\u0024search",
+            "name": "search",
+            "summary": "",
+            "url": "classes/Kastela-VaultCountInput.html#property_search"
+        },                {
             "fqsen": "\\Kastela\\VaultUpdateInput",
             "name": "VaultUpdateInput",
             "summary": "",
@@ -335,6 +375,56 @@ Search.appendIndex(
             "name": "tokens",
             "summary": "",
             "url": "classes/Kastela-ProtectionOpenInput.html#property_tokens"
+        },                {
+            "fqsen": "\\Kastela\\ProtectionFetchInput",
+            "name": "ProtectionFetchInput",
+            "summary": "",
+            "url": "classes/Kastela-ProtectionFetchInput.html"
+        },                {
+            "fqsen": "\\Kastela\\ProtectionFetchInput\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Kastela-ProtectionFetchInput.html#method___construct"
+        },                {
+            "fqsen": "\\Kastela\\ProtectionFetchInput\u003A\u003AjsonSerialize\u0028\u0029",
+            "name": "jsonSerialize",
+            "summary": "",
+            "url": "classes/Kastela-ProtectionFetchInput.html#method_jsonSerialize"
+        },                {
+            "fqsen": "\\Kastela\\ProtectionFetchInput\u003A\u003A\u0024protectionID",
+            "name": "protectionID",
+            "summary": "",
+            "url": "classes/Kastela-ProtectionFetchInput.html#property_protectionID"
+        },                {
+            "fqsen": "\\Kastela\\ProtectionFetchInput\u003A\u003A\u0024search",
+            "name": "search",
+            "summary": "",
+            "url": "classes/Kastela-ProtectionFetchInput.html#property_search"
+        },                {
+            "fqsen": "\\Kastela\\ProtectionCountInput",
+            "name": "ProtectionCountInput",
+            "summary": "",
+            "url": "classes/Kastela-ProtectionCountInput.html"
+        },                {
+            "fqsen": "\\Kastela\\ProtectionCountInput\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Kastela-ProtectionCountInput.html#method___construct"
+        },                {
+            "fqsen": "\\Kastela\\ProtectionCountInput\u003A\u003AjsonSerialize\u0028\u0029",
+            "name": "jsonSerialize",
+            "summary": "",
+            "url": "classes/Kastela-ProtectionCountInput.html#method_jsonSerialize"
+        },                {
+            "fqsen": "\\Kastela\\ProtectionCountInput\u003A\u003A\u0024protectionID",
+            "name": "protectionID",
+            "summary": "",
+            "url": "classes/Kastela-ProtectionCountInput.html#property_protectionID"
+        },                {
+            "fqsen": "\\Kastela\\ProtectionCountInput\u003A\u003A\u0024search",
+            "name": "search",
+            "summary": "",
+            "url": "classes/Kastela-ProtectionCountInput.html#property_search"
         },                {
             "fqsen": "\\Kastela\\CryptoEncryptInput",
             "name": "CryptoEncryptInput",
