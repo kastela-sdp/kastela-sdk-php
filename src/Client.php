@@ -35,21 +35,21 @@ class Client
 
   /**
    * @param string $kastelaUrl Kastela server url
-   * @param string $caCertPath Kastela ca certificate path
-   * @param string $clientCertPath Kastela client certificate path
-   * @param string $clientKeyPath kastela client key path
+   * @param string $caCert Kastela ca certificate string in PEM format
+   * @param string $clientCert Kastela client certificate string in PEM format
+   * @param string $clientKey kastela client key string in PEM format
    * @return void
    */
-  public function __construct(string $kastelaUrl, string $caCertPath, string $clientCertPath, string $clientKeyPath)
+  public function __construct(string $kastelaUrl, string $caCert, string $clientCert, string $clientKey)
   {
     $this->kastelaUrl = $kastelaUrl;
 
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
-    curl_setopt($ch, CURLOPT_SSLCERT, $clientCertPath);
-    curl_setopt($ch, CURLOPT_SSLKEY, $clientKeyPath);
-    curl_setopt($ch, CURLOPT_CAINFO, $caCertPath);
+    curl_setopt($ch, CURLOPT_SSLCERT_BLOB, $clientCert);
+    curl_setopt($ch, CURLOPT_SSLKEY_BLOB, $clientKey);
+    curl_setopt($ch, CURLOPT_CAINFO_BLOB, $caCert);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HEADER, true);
     $this->ch = $ch;
@@ -204,6 +204,7 @@ class Client
     $url = $this->kastelaUrl . vaultPath . 'store';
 
     $res = $this->request('post', $url, $input);
+    
     return $res["tokens"];
   }
 
@@ -287,6 +288,22 @@ class Client
     $this->request('post', $url, $input);
   }
 
+    /** Tokenize data for protection
+   * @param list<ProtectionTokenizeInput> $input protection tokenize input data
+   * @return void
+   * ##### Example
+   * ```php
+   * const tokens = await client.protectionTokenize([{ protectionID: "your-protection-id", values: ["foo", "bar", "baz"]}])
+   * ```
+   */
+  public function protectionTokenize(array $input)
+  {
+    $url = $this->kastelaUrl . protectionPath . 'tokenize';
+    $res = $this->request('post', $url, $input);
+
+    return $res["tokens"];
+  }
+
   /** Encrypt data protection by protection data ids, which can be used $after storing data or updating data.
    * @param list<ProtectionSealInput> $input
    * @return void
@@ -315,7 +332,7 @@ class Client
   {
     $url = $this->kastelaUrl . protectionPath . 'open';
     $res = $this->request('post', $url, $input);
-    return $res["data"];
+    return $res["values"];
   }
 
   /** Fetch protection data
@@ -644,6 +661,29 @@ class ProtectionSealInput implements JsonSerializable
     return [
       "protection_id" => $this->protectionID,
       "primary_keys" => $this->primaryKeys
+    ];
+  }
+}
+
+class ProtectionTokenizeInput implements JsonSerializable
+{
+  private string $protectionID;
+  private array $values;
+
+  /**
+   * @param array<mixed> $values
+   */
+  public function __construct(string $protectionID, array $values)
+  {
+    $this->protectionID = $protectionID;
+    $this->values = $values;
+  }
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      "protection_id" => $this->protectionID,
+      "values" => $this->values
     ];
   }
 }
